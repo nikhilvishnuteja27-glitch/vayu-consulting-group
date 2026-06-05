@@ -101,6 +101,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <p className="mt-1.5 font-body font-light" style={{ fontSize: '0.8125rem', color: 'rgba(245,243,238,0.36)' }}>
                   We respond within one business day.
                 </p>
+                <a href="tel:+13122700009" className="mt-1 inline-block font-body font-light transition-colors duration-200" style={{ fontSize: '0.8125rem', color: 'rgba(245,243,238,0.28)' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.65)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.28)'}
+                >
+                  (312) 270-0009
+                </a>
               </div>
               <button
                 onClick={handleClose}

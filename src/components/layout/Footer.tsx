@@ -103,6 +103,17 @@ export function Footer() {
               </li>
               <li>
                 <a
+                  href="tel:+13122700009"
+                  className="font-body font-light transition-colors duration-200"
+                  style={{ fontSize: '0.875rem', color: 'rgba(245,243,238,0.28)' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.58)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.28)'}
+                >
+                  (312) 270-0009
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://linkedin.com/company/vayu-consulting-group"
                   target="_blank"
                   rel="noopener noreferrer"
