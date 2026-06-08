@@ -19,7 +19,7 @@ export function useCountUp({
   suffix = '',
   startWhen = true,
 }: CountUpOptions) {
-  const [value, setValue] = useState(prefix + (0).toFixed(decimals) + suffix)
+  const [value, setValue] = useState(() => prefix + end.toFixed(decimals) + suffix)
   const rafRef = useRef<number>(0)
   const started = useRef(false)
 

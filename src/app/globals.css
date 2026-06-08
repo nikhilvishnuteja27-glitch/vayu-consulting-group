@@ -238,10 +238,68 @@
   .btn-cobalt { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6875rem 1.875rem; border-radius: 999px; border: 1px solid rgba(245,243,238,0.20); background: transparent; color: rgba(245,243,238,0.72); font-family: var(--font-body-var),sans-serif; font-size: 0.875rem; font-weight: 400; cursor: pointer; text-decoration: none; transition: all 0.22s; }
 
   /* ────────────────────────────────────────────────
+     LIGHT SECTION UTILITIES (Arctic White theme)
+  ──────────────────────────────────────────────── */
+
+  .vcg-label-dark {
+    font-family: var(--font-body-var), sans-serif;
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: rgba(17,18,20,0.36);
+    display: block;
+    line-height: 1;
+  }
+
+  .rule-dark {
+    border: none;
+    border-top: 1px solid rgba(17,18,20,0.08);
+    margin-bottom: 2.75rem;
+  }
+
+  .card-white {
+    background: #FFFFFF;
+    border: 1px solid rgba(17,18,20,0.07);
+    border-radius: 4px;
+    transition: border-color 0.24s ease, box-shadow 0.24s ease;
+  }
+  .card-white:hover {
+    border-color: rgba(17,18,20,0.14);
+    box-shadow: 0 4px 24px rgba(17,18,20,0.07);
+  }
+
+  /* Dark pill button — for use on light backgrounds */
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6875rem 1.875rem;
+    border-radius: 999px;
+    border: 1px solid #111214;
+    background: #111214;
+    color: #F5F3EE;
+    font-family: var(--font-body-var), sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-dark:hover {
+    background: #0B0B0D;
+    border-color: #0B0B0D;
+    box-shadow: 0 6px 24px rgba(17,18,20,0.18);
+    transform: translateY(-1px);
+  }
+  .btn-dark:active { transform: translateY(0); }
+
+  /* ────────────────────────────────────────────────
      NAVIGATION
   ──────────────────────────────────────────────── */
 
-  /* Elevated state — dark blur */
+  /* Elevated state — dark blur (on/near hero) */
   .glass-nav {
     background: rgba(11,11,13,0.88);
     backdrop-filter: blur(24px) saturate(180%);
@@ -249,7 +307,44 @@
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
-  /* Nav links */
+  /* Light nav — on Arctic White sections */
+  .nav-light {
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-bottom: 1px solid rgba(17,18,20,0.08);
+  }
+
+  /* Nav links — light variant (dark text on light nav) */
+  .nav-link-dark {
+    position: relative;
+    font-family: var(--font-body-var), sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: rgba(17,18,20,0.48);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.20s ease;
+    text-decoration: none;
+  }
+  .nav-link-dark::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; left: 0;
+    width: 0; height: 1px;
+    background: rgba(17,18,20,0.55);
+    border-radius: 999px;
+    transition: width 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-link-dark:hover { color: rgba(17,18,20,0.85); }
+  .nav-link-dark:hover::after { width: 100%; }
+  .nav-link-dark-active { color: rgba(17,18,20,0.90); }
+  .nav-link-dark-active::after { width: 100%; }
+
+  /* Nav links — original light variant (white text on dark nav) */
   .nav-link {
     position: relative;
     font-family: var(--font-body-var), sans-serif;

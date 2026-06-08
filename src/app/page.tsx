@@ -1,42 +1,65 @@
-import { Hero } from '@/components/sections/Hero'
-import { Statement } from '@/components/sections/Statement'
-import { Positioning } from '@/components/sections/Positioning'
-import { Capabilities } from '@/components/sections/Capabilities'
-import { ExecutionModel } from '@/components/sections/ExecutionModel'
-import { AIInfrastructure } from '@/components/sections/AIInfrastructure'
-import { TrustSignals } from '@/components/sections/TrustSignals'
-import { CTA } from '@/components/sections/CTA'
-import { Marquee } from '@/components/ui/Marquee'
-
-const MARQUEE_ITEMS = [
-  'Strategy',
-  'Execution',
-  'Technology',
-  'Intelligence',
-  'Accountability',
-  'Delivery',
-  'Precision',
-  'Leadership',
-  'Enterprise',
-  'Innovation',
-]
+import { Hero }                  from '@/components/sections/Hero'
+import { BuiltFor }              from '@/components/sections/BuiltFor'
+import { ExecutionGap }          from '@/components/sections/ExecutionGap'
+import { WhenToCall }            from '@/components/sections/WhenToCall'
+import { ExecutionIntelligence } from '@/components/sections/ExecutionIntelligence'
+import { ExecutionModel }        from '@/components/sections/ExecutionModel'
+import { EngagementStructure }   from '@/components/sections/EngagementStructure'
+import { WhatWeDeliver }         from '@/components/sections/WhatWeDeliver'
+import { VCGDifference }         from '@/components/sections/VCGDifference'
+import { WhyVCG }                from '@/components/sections/WhyVCG'
+import { FounderPerspective }    from '@/components/sections/FounderPerspective'
+import { Insights }              from '@/components/sections/Insights'
+import { AIExecution }           from '@/components/sections/AIExecution'
+import { AfterEngagement }       from '@/components/sections/AfterEngagement'
+import { CTA }                   from '@/components/sections/CTA'
 
 export default function Home() {
   return (
     <>
+      {/* Obsidian — Problem */}
       <Hero />
-      <Statement />
 
-      {/* Marquee strip — architectural section divider */}
-      <div className="marquee-strip" aria-hidden>
-        <Marquee items={MARQUEE_ITEMS} speed={42} />
-      </div>
+      {/* White — Self-identification */}
+      <BuiltFor />
 
-      <Positioning />
-      <Capabilities />
+      {/* White — Diagnosis */}
+      <ExecutionGap />
+
+      {/* Warm White — Urgency */}
+      <WhenToCall />
+
+      {/* Warm White — Category + Proof */}
+      <ExecutionIntelligence />
+
+      {/* White — Branded framework */}
       <ExecutionModel />
-      <AIInfrastructure />
-      <TrustSignals />
+
+      {/* Warm White — Process clarity */}
+      <EngagementStructure />
+
+      {/* White — Outcomes */}
+      <WhatWeDeliver />
+
+      {/* Obsidian — Model contrast */}
+      <VCGDifference />
+
+      {/* Warm White — Conviction */}
+      <WhyVCG />
+
+      {/* White — Origin */}
+      <FounderPerspective />
+
+      {/* White — Category building */}
+      <Insights />
+
+      {/* Obsidian — Infrastructure */}
+      <AIExecution />
+
+      {/* White — Emotional resolution / success state */}
+      <AfterEngagement />
+
+      {/* Obsidian — Action */}
       <CTA />
     </>
   )

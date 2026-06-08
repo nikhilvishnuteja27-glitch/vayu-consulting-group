@@ -4,82 +4,111 @@ import { useRef } from 'react'
 import { motion, useInView, useScroll, useSpring } from 'framer-motion'
 
 const PHASES = [
-  { n: '01', name: 'Assess',   tag: 'Initiative Scoping',        body: 'A structured assessment of scope, required capabilities, timeline, and risk profile. No assumptions. No templates from the last engagement.',              accent: 'Define the mission with precision.' },
-  { n: '02', name: 'Assemble', tag: 'Team Construction',         body: 'VCG builds the exact team your initiative demands — right specialists, right seniority, right structure. Selected for the specific challenge.',               accent: 'Right people, right moment.'       },
-  { n: '03', name: 'Embed',    tag: 'Integration & Activation',  body: 'The team integrates into your environment — your tools, rhythms, and stakeholders. No ramp-up theater. Execution begins from day one.',                        accent: 'Inside your world from Day 1.'    },
-  { n: '04', name: 'Deliver',  tag: 'Accountable Execution',     body: 'Operational accountability from kickoff through completion. Milestones held. Quality non-negotiable. Results and capability transfer — not reports.',           accent: 'Outcomes, not outputs.'           },
+  {
+    n: '01',
+    name: 'Assess',
+    tag: 'Initiative Scoping',
+    body: 'A structured assessment of scope, required capabilities, timeline, and risk profile. No assumptions. No templates from a previous engagement. This initiative is treated as the specific challenge it is.',
+    accent: 'Define the mission with precision.',
+  },
+  {
+    n: '02',
+    name: 'Assemble',
+    tag: 'Team Construction',
+    body: 'VCG builds the exact team this initiative demands — right specialists, right seniority, right accountability structure. Not the available team. The right team.',
+    accent: 'Right people. Right moment.',
+  },
+  {
+    n: '03',
+    name: 'Embed',
+    tag: 'Integration & Activation',
+    body: 'The team integrates into your environment — your tools, your rhythms, your stakeholders. No ramp-up theater. No orientation period. Execution begins on day one.',
+    accent: 'Inside your world from Day One.',
+  },
+  {
+    n: '04',
+    name: 'Deliver',
+    tag: 'Accountable Execution',
+    body: 'Full operational accountability from kickoff through outcome. Milestones held. Quality non-negotiable. The engagement concludes when the outcome is achieved — not when the initial timeline expires.',
+    accent: 'Outcomes. Not reports.',
+  },
 ]
 
-function PhaseColumn({ phase, idx }: { phase: (typeof PHASES)[0]; idx: number }) {
+function PhaseCard({ phase, idx }: { phase: (typeof PHASES)[0]; idx: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-6% 0px' })
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.78, delay: idx * 0.09, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.75, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
       className="relative flex flex-col"
       style={{ minWidth: 0 }}
     >
-      {/* Node badge */}
-      <div className="relative mb-7 flex items-center">
-        <div
-          className="flex items-center justify-center rounded-full flex-shrink-0 z-10"
-          style={{
-            width: 34, height: 34,
-            background: idx === 0 ? '#F5F3EE' : '#1A1D22',
-            border: `1px solid ${idx === 0 ? '#F5F3EE' : 'rgba(255,255,255,0.12)'}`,
-            boxShadow: idx === 0 ? '0 0 0 4px rgba(200,169,110,0.15), 0 4px 16px rgba(0,0,0,0.40)' : '0 2px 8px rgba(0,0,0,0.30)',
-          }}
-        >
-          <span className="font-mono" style={{
-            fontSize: '0.5625rem', letterSpacing: '0.08em',
-            color: idx === 0 ? '#0B0B0D' : 'rgba(245,243,238,0.36)',
-            fontWeight: 400,
-          }}>
-            {phase.n}
-          </span>
-        </div>
+      {/* Phase header */}
+      <div className="flex items-baseline gap-3 mb-5">
+        <span className="font-mono" style={{ fontSize: '0.5rem', letterSpacing: '0.12em', color: 'rgba(17,18,20,0.24)', fontWeight: 400 }}>
+          {phase.n}
+        </span>
+        <span className="font-body font-normal" style={{ fontSize: '0.625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(17,18,20,0.28)' }}>
+          {phase.tag}
+        </span>
       </div>
 
-      <p className="font-body font-normal mb-2" style={{ fontSize: '0.625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(245,243,238,0.24)' }}>
-        {phase.tag}
-      </p>
+      {/* Phase name — large, ownable */}
+      <div style={{ overflow: 'hidden', marginBottom: '1rem' }}>
+        <motion.h3
+          initial={{ y: '80%', opacity: 0 }}
+          animate={inView ? { y: '0%', opacity: 1 } : {}}
+          transition={{ duration: 0.75, delay: idx * 0.08 + 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display font-normal"
+          style={{
+            fontSize: 'clamp(2rem, 3vw, 2.8rem)',
+            lineHeight: 1.0,
+            letterSpacing: '-0.032em',
+            color: '#111214',
+          }}
+        >
+          {phase.name}
+        </motion.h3>
+      </div>
 
-      <h3 className="font-display font-normal mb-3" style={{ fontSize: 'clamp(1.5rem, 2vw, 2rem)', lineHeight: 1.1, letterSpacing: '-0.024em', color: '#F5F3EE' }}>
-        {phase.name}
-      </h3>
+      {/* Amber line */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        animate={inView ? { scaleX: 1 } : {}}
+        transition={{ duration: 0.6, delay: idx * 0.08 + 0.30, ease: [0.16, 1, 0.3, 1] }}
+        style={{ width: '28px', height: '2px', background: '#C8A96E', transformOrigin: 'left', marginBottom: '1rem' }}
+      />
 
-      <div className="mb-4" style={{ width: 24, height: 1, background: '#C8A96E', opacity: 0.60 }} />
-
-      <p className="font-body font-light flex-1" style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'rgba(245,243,238,0.50)' }}>
+      {/* Body */}
+      <p className="font-body font-light flex-1" style={{ fontSize: '0.875rem', lineHeight: 1.85, color: 'rgba(17,18,20,0.52)' }}>
         {phase.body}
       </p>
 
-      <p className="font-display italic mt-5 pt-4" style={{ fontSize: '0.875rem', borderTop: '1px solid rgba(255,255,255,0.06)', color: 'rgba(245,243,238,0.30)', letterSpacing: '-0.005em' }}>
+      {/* Accent */}
+      <p
+        className="font-display italic mt-5 pt-4"
+        style={{ fontSize: '0.875rem', borderTop: '1px solid rgba(17,18,20,0.08)', color: 'rgba(17,18,20,0.30)', letterSpacing: '-0.005em' }}
+      >
         {phase.accent}
       </p>
-
-      {/* Ghost ordinal */}
-      <div className="absolute bottom-0 right-0 font-display font-normal select-none pointer-events-none" style={{ fontSize: '5rem', lineHeight: 1, letterSpacing: '-0.06em', color: 'rgba(255,255,255,0.025)' }} aria-hidden>
-        {phase.n}
-      </div>
     </motion.div>
   )
 }
 
 function TimelineLine() {
   const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 80%', 'end 55%'] })
-  const scaleX = useSpring(scrollYProgress, { stiffness: 60, damping: 22, restDelta: 0.001 })
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 80%', 'end 50%'] })
+  const scaleX = useSpring(scrollYProgress, { stiffness: 55, damping: 20, restDelta: 0.001 })
 
   return (
-    <div ref={ref} className="relative h-px w-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
+    <div ref={ref} className="relative h-px w-full" style={{ background: 'rgba(17,18,20,0.10)' }}>
       <motion.div
         className="absolute top-0 left-0 h-full origin-left"
-        style={{ scaleX, background: 'linear-gradient(90deg, #C8A96E 0%, #D4B483 55%, rgba(200,169,110,0.18) 100%)' }}
+        style={{ scaleX, background: 'linear-gradient(90deg, #C8A96E 0%, rgba(200,169,110,0.40) 75%, transparent 100%)' }}
       />
     </div>
   )
@@ -90,57 +119,102 @@ export function ExecutionModel() {
   const headerInView = useInView(headerRef, { once: true, margin: '-10% 0px' })
 
   return (
-    <section id="execution" className="relative section-pad overflow-hidden" style={{ background: '#0B0B0D' }}>
-      <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 100% 40%, rgba(200,169,110,0.025) 0%, transparent 70%)' }} />
+    <section id="model" className="relative section-pad overflow-hidden" style={{ background: '#F5F3EE', borderTop: '1px solid rgba(17,18,20,0.07)' }}>
 
       <div className="container-site relative z-10">
-        <div className="rule mb-10 md:mb-12" />
 
+        {/* Framework header */}
         <motion.div
           ref={headerRef}
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 md:mb-16"
         >
           <div>
-            <p className="vcg-label mb-4">How We Operate</p>
-            <h2 className="font-display font-normal" style={{ fontSize: 'clamp(1.9rem, 3.2vw, 3.2rem)', lineHeight: 1.1, letterSpacing: '-0.028em', color: '#F5F3EE' }}>
-              The Execution Model
+            {/* Branded framework name */}
+            <div className="flex items-center gap-3 mb-4">
+              <span className="vcg-label-dark">How We Operate</span>
+              <div style={{ height: '1px', width: '24px', background: 'rgba(17,18,20,0.14)' }} />
+              <span className="font-body font-normal" style={{ fontSize: '0.5625rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,18,20,0.30)' }}>
+                Proprietary Framework
+              </span>
+            </div>
+            <h2
+              className="font-display font-normal"
+              style={{ fontSize: 'clamp(1.9rem, 3.2vw, 3.2rem)', lineHeight: 1.08, letterSpacing: '-0.030em', color: '#111214' }}
+            >
+              The VCG Execution Model
             </h2>
           </div>
-          <p className="font-body font-light md:text-right" style={{ fontSize: '1rem', lineHeight: 1.75, maxWidth: '38ch', color: 'rgba(245,243,238,0.48)' }}>
-            Four distinct phases. Full accountability.<br className="hidden md:block" />
-            No ambiguity from first conversation to final delivery.
+          <p
+            className="font-body font-light md:text-right"
+            style={{ fontSize: '0.9375rem', lineHeight: 1.78, maxWidth: '38ch', color: 'rgba(17,18,20,0.46)' }}
+          >
+            Four phases. Full accountability. No ambiguity from first conversation to final outcome.
           </p>
         </motion.div>
 
-        {/* Desktop horizontal timeline */}
+        {/* Desktop — horizontal with timeline */}
         <div className="hidden md:block">
           <TimelineLine />
-          <div className="grid grid-cols-4 gap-8 mt-8">
-            {PHASES.map((phase, i) => <PhaseColumn key={phase.n} phase={phase} idx={i} />)}
+          {/* Phase names bar */}
+          <div className="grid grid-cols-4 gap-6 mt-2 mb-8">
+            {PHASES.map((phase, i) => (
+              <div key={phase.n} className="flex items-center gap-2">
+                <div
+                  style={{
+                    width: 8, height: 8, borderRadius: '50%', flexShrink: 0,
+                    background: i === 0 ? '#111214' : 'rgba(17,18,20,0.20)',
+                    border: i === 0 ? 'none' : '1px solid rgba(17,18,20,0.20)',
+                    marginTop: '-4px',
+                    position: 'relative', top: '-4px',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-4 gap-6">
+            {PHASES.map((phase, i) => <PhaseCard key={phase.n} phase={phase} idx={i} />)}
           </div>
         </div>
 
-        {/* Mobile vertical stack */}
+        {/* Mobile — vertical */}
         <div className="md:hidden space-y-10">
           {PHASES.map((phase, i) => (
             <div key={phase.n} className="relative pl-10">
               {i < PHASES.length - 1 && (
-                <div className="absolute left-[16px] top-9 bottom-0 w-px" style={{ background: 'linear-gradient(to bottom, rgba(200,169,110,0.50), rgba(200,169,110,0.04))' }} />
+                <div
+                  className="absolute left-[7px] top-8 bottom-0 w-px"
+                  style={{ background: 'linear-gradient(to bottom, rgba(200,169,110,0.55), rgba(200,169,110,0.04))' }}
+                />
               )}
-              <div className="absolute left-0 top-0 flex items-center justify-center rounded-full" style={{ width: 34, height: 34, background: i === 0 ? '#F5F3EE' : '#1A1D22', border: `1px solid ${i === 0 ? '#F5F3EE' : 'rgba(255,255,255,0.12)'}` }}>
-                <span className="font-mono" style={{ fontSize: '0.5625rem', letterSpacing: '0.08em', color: i === 0 ? '#0B0B0D' : 'rgba(245,243,238,0.36)', fontWeight: 400 }}>{phase.n}</span>
-              </div>
-              <p className="font-body font-normal mb-1.5" style={{ fontSize: '0.625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(245,243,238,0.24)' }}>{phase.tag}</p>
-              <h3 className="font-display font-normal mb-3" style={{ fontSize: '1.65rem', lineHeight: 1.1, letterSpacing: '-0.022em', color: '#F5F3EE' }}>{phase.name}</h3>
-              <div style={{ width: 24, height: 1, background: '#C8A96E', opacity: 0.60, marginBottom: '0.75rem' }} />
-              <p className="font-body font-light" style={{ fontSize: '0.9375rem', lineHeight: 1.78, color: 'rgba(245,243,238,0.50)', marginBottom: '0.75rem' }}>{phase.body}</p>
-              <p className="font-display italic" style={{ fontSize: '0.875rem', color: 'rgba(245,243,238,0.28)', letterSpacing: '-0.005em' }}>{phase.accent}</p>
+              {/* Node */}
+              <div
+                className="absolute left-0 top-0 flex items-center justify-center rounded-full"
+                style={{
+                  width: 16, height: 16,
+                  background: i === 0 ? '#111214' : '#FFFFFF',
+                  border: `1px solid ${i === 0 ? '#111214' : 'rgba(17,18,20,0.20)'}`,
+                }}
+              />
+              <span className="font-body font-normal mb-1 block" style={{ fontSize: '0.5625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(17,18,20,0.28)' }}>
+                {phase.tag}
+              </span>
+              <h3 className="font-display font-normal mb-2" style={{ fontSize: '2rem', lineHeight: 1.05, letterSpacing: '-0.028em', color: '#111214' }}>
+                {phase.name}
+              </h3>
+              <div style={{ width: 24, height: 2, background: '#C8A96E', marginBottom: '0.75rem' }} />
+              <p className="font-body font-light mb-3" style={{ fontSize: '0.9375rem', lineHeight: 1.80, color: 'rgba(17,18,20,0.52)' }}>
+                {phase.body}
+              </p>
+              <p className="font-display italic" style={{ fontSize: '0.875rem', color: 'rgba(17,18,20,0.30)', letterSpacing: '-0.005em' }}>
+                {phase.accent}
+              </p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   )
