@@ -175,7 +175,7 @@ export function WhyVCG() {
                   North America — Primary
                 </p>
                 <p className="font-body font-light" style={{ fontSize: '0.8125rem', color: 'rgba(17,18,20,0.42)', lineHeight: 1.72 }}>
-                  Operator network extends globally. VCG engagements are focused, not dispersed.
+                  Engagements delivered across North America.
                 </p>
               </div>
             </motion.div>

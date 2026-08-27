@@ -29,7 +29,7 @@ const PHASES = [
     n: '04',
     name: 'Deliver',
     tag: 'Accountable Execution',
-    body: 'Full operational accountability from kickoff through outcome. Milestones held. Quality non-negotiable. The engagement concludes when the outcome is achieved — not when the initial timeline expires.',
+    body: 'Full operational accountability from kickoff through outcome. Milestones held. Quality non-negotiable. Engagements are defined by outcome criteria and transition conditions — not by initial timelines alone.',
     accent: 'Outcomes. Not reports.',
   },
 ]

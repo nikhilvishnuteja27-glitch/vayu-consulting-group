@@ -32,7 +32,7 @@ const STEPS = [
   {
     n: '06',
     title: 'Outcome Ownership',
-    body: 'The engagement concludes when the defined outcome is achieved and verified — not when the initial timeline expires, not when the first milestone lands. This is the structure of every VCG engagement.',
+    body: 'VCG structures engagements around delivery outcomes, accountability criteria, and defined transition conditions — not around initial timelines or milestone counts alone. The measure is whether the outcome is achieved and the transition back to internal operations is set up to maintain it.',
   },
 ]
 

@@ -10,10 +10,11 @@ import { VCGMark } from '@/components/layout/VCGMark'
 import { useContactModal } from '@/context/ContactModalContext'
 
 const NAV_LINKS = [
-  { label: 'What We Do',  href: '/what-we-do'  },
-  { label: 'How We Work', href: '/how-we-work' },
-  { label: 'About',       href: '/about'       },
-  { label: 'Join VCG',   href: '/join'        },
+  { label: 'What We Do',    href: '/what-we-do'    },
+  { label: 'How We Work',   href: '/how-we-work'   },
+  { label: 'Perspectives',  href: '/perspectives'  },
+  { label: 'About',         href: '/about'         },
+  { label: 'Join VCG',      href: '/join'          },
 ]
 
 export function Navigation() {
@@ -83,7 +84,7 @@ export function Navigation() {
             </Link>
 
             {/* Desktop links */}
-            <div className="hidden md:flex items-center gap-9">
+            <div className="hidden md:flex items-center gap-7">
               {NAV_LINKS.map(link => {
                 const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
                 return (

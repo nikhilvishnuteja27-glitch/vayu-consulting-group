@@ -17,8 +17,8 @@ const VCG_MODEL = [
   'Operates embedded inside the initiative.',
   'Produces outcomes.',
   'Remains through delivery.',
-  'Measured only by outcomes achieved.',
-  'Concludes when the outcome is delivered.',
+  'Defined by delivery outcomes and transition criteria.',
+  'Structured around outcomes, not contract duration.',
 ]
 
 export function VCGDifference() {

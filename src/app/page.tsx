@@ -1,12 +1,13 @@
-import { Hero }                  from '@/components/sections/Hero'
-import { ExecutionGap }          from '@/components/sections/ExecutionGap'
-import { WhatVCGDoes }           from '@/components/sections/WhatVCGDoes'
-import { ExecutionIntelligence } from '@/components/sections/ExecutionIntelligence'
-import { ExecutionModel }        from '@/components/sections/ExecutionModel'
-import { WhenToCall }            from '@/components/sections/WhenToCall'
-import { VCGDifference }         from '@/components/sections/VCGDifference'
-import { WhyVCG }                from '@/components/sections/WhyVCG'
-import { CTA }                   from '@/components/sections/CTA'
+import { Hero }                    from '@/components/sections/Hero'
+import { ExecutionGap }            from '@/components/sections/ExecutionGap'
+import { WhatVCGDoes }             from '@/components/sections/WhatVCGDoes'
+import { ExecutionIntelligence }   from '@/components/sections/ExecutionIntelligence'
+import { ExecutionModel }          from '@/components/sections/ExecutionModel'
+import { WhenToCall }              from '@/components/sections/WhenToCall'
+import { VCGDifference }           from '@/components/sections/VCGDifference'
+import { WhyVCG }                  from '@/components/sections/WhyVCG'
+import { PerspectivesPreview }     from '@/components/sections/PerspectivesPreview'
+import { CTA }                     from '@/components/sections/CTA'
 
 export default function Home() {
   return (
@@ -34,6 +35,9 @@ export default function Home() {
 
       {/* White — Conviction */}
       <WhyVCG />
+
+      {/* Warm White — Editorial preview */}
+      <PerspectivesPreview />
 
       {/* Obsidian — Action */}
       <CTA />
