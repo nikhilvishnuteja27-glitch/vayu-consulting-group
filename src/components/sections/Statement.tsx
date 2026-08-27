@@ -22,7 +22,7 @@ function WordLine({ text, baseDelay, italic, inView }: { text: string; baseDelay
         fontSize: 'clamp(2rem, 4.5vw, 4.2rem)',
         lineHeight: 1.12,
         letterSpacing: '-0.030em',
-        color: italic ? 'rgba(245,243,238,0.40)' : 'rgba(245,243,238,0.82)',
+        color: italic ? 'rgba(17,18,20,0.38)' : 'rgba(17,18,20,0.80)',
       }}
     >
       {text.split(' ').map((word, i) => (
@@ -52,13 +52,13 @@ export function Statement() {
       ref={ref}
       className="relative overflow-hidden"
       style={{
-        background: '#111214',
+        background: '#FFFFFF',
         padding: 'clamp(5rem, 10vw, 9rem) 0',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        borderTop: '1px solid rgba(17,18,20,0.07)',
+        borderBottom: '1px solid rgba(17,18,20,0.07)',
       }}
     >
-      {/* Left amber accent line */}
+      {/* Left accent line — amber on white */}
       <motion.div
         initial={{ scaleY: 0 }}
         animate={inView ? { scaleY: 1 } : {}}
@@ -70,7 +70,7 @@ export function Statement() {
           transform: 'translateY(-50%)',
           width: '2px',
           height: '60%',
-          background: 'linear-gradient(to bottom, transparent, rgba(200,169,110,0.55) 30%, rgba(200,169,110,0.55) 70%, transparent)',
+          background: 'linear-gradient(to bottom, transparent, rgba(200,169,110,0.60) 30%, rgba(200,169,110,0.60) 70%, transparent)',
           transformOrigin: 'top',
         }}
         aria-hidden
@@ -82,7 +82,7 @@ export function Statement() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0 }}
-            className="vcg-label mb-10"
+            className="vcg-label-dark mb-10"
           >
             Our Premise
           </motion.p>
@@ -103,7 +103,7 @@ export function Statement() {
               fontSize: 'clamp(2rem, 4.5vw, 4.2rem)',
               lineHeight: 1.12,
               letterSpacing: '-0.030em',
-              color: '#F5F3EE',
+              color: '#111214',
             }}
           >
             {punchlineWords.map((word, i) => (
@@ -130,8 +130,8 @@ export function Statement() {
             transition={{ duration: 0.7, delay: 0.85 }}
             className="mt-10 flex items-center gap-3"
           >
-            <div style={{ width: '24px', height: '1px', background: 'rgba(245,243,238,0.16)' }} />
-            <span className="font-body font-light" style={{ fontSize: '0.8125rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(245,243,238,0.26)' }}>
+            <div style={{ width: '24px', height: '1px', background: 'rgba(17,18,20,0.18)' }} />
+            <span className="font-body font-light" style={{ fontSize: '0.8125rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(17,18,20,0.32)' }}>
               Vayu Consulting Group
             </span>
           </motion.div>

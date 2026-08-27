@@ -6,7 +6,7 @@ import { motion, useInView } from 'framer-motion'
 const CAPABILITIES = [
   {
     title: 'Decision Support',
-    body: 'Program intelligence converted into leadership-ready clarity in real time. Executives see what matters, not what happened last week.',
+    body: 'Program intelligence converted into leadership-ready clarity — not a week later, when it no longer matters.',
   },
   {
     title: 'Execution Visibility',
@@ -14,7 +14,7 @@ const CAPABILITIES = [
   },
   {
     title: 'Governance Acceleration',
-    body: 'Automated accountability structures that maintain delivery rigor across complex initiatives without creating administrative overhead.',
+    body: 'Structured accountability mechanisms that maintain delivery rigor across complex initiatives without creating administrative overhead.',
   },
 ]
 
@@ -66,7 +66,7 @@ export function AIExecution() {
             className="flex items-end"
           >
             <p className="font-body font-light" style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(245,243,238,0.45)', maxWidth: '44ch' }}>
-              VCG integrates AI capabilities as operational infrastructure — embedded into governance, visibility, and coordination at every stage of delivery. Not as an add-on. Not as a separate workstream.
+              AI-enabled workflows can support program visibility, governance, reporting, and decision support within VCG engagements — not as an add-on, but as part of how execution is managed.
             </p>
           </motion.div>
         </div>

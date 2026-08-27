@@ -1,6 +1,9 @@
 'use client'
 
 import { useScroll, useSpring, motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
+
+const SUPPRESS_ROUTES = new Set(['/privacy', '/terms'])
 
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll()
@@ -9,6 +12,9 @@ export function ScrollProgress() {
     damping: 30,
     restDelta: 0.001,
   })
+  const pathname = usePathname()
+
+  if (SUPPRESS_ROUTES.has(pathname)) return null
 
   return (
     <motion.div

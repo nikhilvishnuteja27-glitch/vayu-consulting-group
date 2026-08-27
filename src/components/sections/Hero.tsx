@@ -3,6 +3,7 @@
 import { useContactModal } from '@/context/ContactModalContext'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
+import Link from 'next/link'
 
 const LINE_EASE = [0.16, 1, 0.3, 1] as const
 
@@ -145,16 +146,16 @@ export function Hero() {
                 <button onClick={openModal} className="btn-primary">
                   Discuss Your Initiative
                 </button>
-                <button
-                  onClick={() => document.getElementById('model')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                <Link
+                  href="/how-we-work"
                   className="inline-flex items-center gap-2 font-body font-normal transition-all duration-200 group"
-                  style={{ fontSize: '0.875rem', color: 'rgba(245,243,238,0.26)', letterSpacing: '0.01em' }}
-                  onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.color = 'rgba(245,243,238,0.58)'}
-                  onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.color = 'rgba(245,243,238,0.26)'}
+                  style={{ fontSize: '0.875rem', color: 'rgba(245,243,238,0.26)', letterSpacing: '0.01em', textDecoration: 'none' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.58)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.26)'}
                 >
-                  How VCG Works
+                  See How VCG Works
                   <ArrowRight size={13} strokeWidth={1.5} className="transition-transform duration-200 group-hover:translate-x-1" />
-                </button>
+                </Link>
               </motion.div>
             </motion.div>
           </div>

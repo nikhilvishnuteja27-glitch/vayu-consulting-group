@@ -22,7 +22,7 @@ const PILLARS = [
     n: '03',
     tag: 'Intelligence',
     title: 'AI-Enabled Governance',
-    body: 'Real-time program visibility, decision support, and coordination infrastructure that keeps leadership informed and execution on course at every stage.',
+    body: 'Ongoing program visibility, decision support, and coordination infrastructure that keeps leadership informed and execution on course at every stage.',
     items: ['Decision Support', 'Program Visibility', 'Governance Acceleration', 'Coordination Infrastructure'],
   },
 ]
@@ -120,7 +120,7 @@ export function ExecutionIntelligence() {
               className="font-display font-normal"
               style={{ fontSize: 'clamp(1.9rem, 3vw, 3rem)', lineHeight: 1.1, letterSpacing: '-0.030em', color: '#111214' }}
             >
-              A new category of organizational capability.
+              A distinct operating model for the gap between strategy and delivered outcomes.
             </h2>
           </motion.div>
           <motion.div

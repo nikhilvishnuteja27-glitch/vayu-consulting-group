@@ -100,6 +100,36 @@
 
 @layer components {
 
+  /* ── Skip navigation link ── */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 999;
+    font-family: var(--font-body-var), sans-serif;
+    font-size: 0.875rem;
+    color: #111214;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    padding: 0.5rem 1rem;
+    background: #F5F3EE;
+    color: #111214;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.32);
+    outline: 2px solid #C8A96E;
+    outline-offset: 2px;
+  }
+
   /* ── Layout ── */
   .container-site {
     width: 100%;

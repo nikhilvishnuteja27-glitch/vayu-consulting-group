@@ -1,17 +1,11 @@
 import { Hero }                  from '@/components/sections/Hero'
-import { BuiltFor }              from '@/components/sections/BuiltFor'
 import { ExecutionGap }          from '@/components/sections/ExecutionGap'
-import { WhenToCall }            from '@/components/sections/WhenToCall'
+import { WhatVCGDoes }           from '@/components/sections/WhatVCGDoes'
 import { ExecutionIntelligence } from '@/components/sections/ExecutionIntelligence'
 import { ExecutionModel }        from '@/components/sections/ExecutionModel'
-import { EngagementStructure }   from '@/components/sections/EngagementStructure'
-import { WhatWeDeliver }         from '@/components/sections/WhatWeDeliver'
+import { WhenToCall }            from '@/components/sections/WhenToCall'
 import { VCGDifference }         from '@/components/sections/VCGDifference'
 import { WhyVCG }                from '@/components/sections/WhyVCG'
-import { FounderPerspective }    from '@/components/sections/FounderPerspective'
-import { Insights }              from '@/components/sections/Insights'
-import { AIExecution }           from '@/components/sections/AIExecution'
-import { AfterEngagement }       from '@/components/sections/AfterEngagement'
 import { CTA }                   from '@/components/sections/CTA'
 
 export default function Home() {
@@ -20,44 +14,26 @@ export default function Home() {
       {/* Obsidian — Problem */}
       <Hero />
 
-      {/* White — Self-identification */}
-      <BuiltFor />
-
       {/* White — Diagnosis */}
       <ExecutionGap />
 
-      {/* Warm White — Urgency */}
-      <WhenToCall />
+      {/* Warm White — Engagement paths */}
+      <WhatVCGDoes />
 
-      {/* Warm White — Category + Proof */}
+      {/* White — Category positioning */}
       <ExecutionIntelligence />
 
-      {/* White — Branded framework */}
+      {/* Warm White — Branded framework */}
       <ExecutionModel />
 
-      {/* Warm White — Process clarity */}
-      <EngagementStructure />
-
-      {/* White — Outcomes */}
-      <WhatWeDeliver />
+      {/* Warm White — Self-identification */}
+      <WhenToCall />
 
       {/* Obsidian — Model contrast */}
       <VCGDifference />
 
-      {/* Warm White — Conviction */}
+      {/* White — Conviction */}
       <WhyVCG />
-
-      {/* White — Origin */}
-      <FounderPerspective />
-
-      {/* White — Category building */}
-      <Insights />
-
-      {/* Obsidian — Infrastructure */}
-      <AIExecution />
-
-      {/* White — Emotional resolution / success state */}
-      <AfterEngagement />
 
       {/* Obsidian — Action */}
       <CTA />

@@ -22,8 +22,8 @@ function TiltCard({ n, Icon, title, body, delay }: { n: string; Icon: LucideIcon
   const cardRef = useRef<HTMLDivElement>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [5, -5]), { stiffness: 180, damping: 22 })
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-5, 5]), { stiffness: 180, damping: 22 })
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [4, -4]), { stiffness: 180, damping: 22 })
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-4, 4]), { stiffness: 180, damping: 22 })
 
   function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = cardRef.current?.getBoundingClientRect()
@@ -43,8 +43,8 @@ function TiltCard({ n, Icon, title, body, delay }: { n: string; Icon: LucideIcon
           rotateX, rotateY,
           transformStyle: 'preserve-3d',
           position: 'relative',
-          background: '#1A1D22',
-          border: '1px solid rgba(255,255,255,0.07)',
+          background: '#FFFFFF',
+          border: '1px solid rgba(17,18,20,0.07)',
           borderRadius: '6px',
           padding: '1.625rem',
           display: 'flex',
@@ -52,35 +52,38 @@ function TiltCard({ n, Icon, title, body, delay }: { n: string; Icon: LucideIcon
           cursor: 'default',
           willChange: 'transform',
           overflow: 'hidden',
-          transition: 'border-color 0.28s ease',
+          transition: 'border-color 0.28s ease, box-shadow 0.28s ease',
         }}
-        whileHover={{ borderColor: 'rgba(255,255,255,0.14)' }}
+        whileHover={{
+          borderColor: 'rgba(17,18,20,0.14)',
+          boxShadow: '0 8px 32px rgba(17,18,20,0.08)',
+        } as Parameters<typeof motion.div>[0]['whileHover']}
       >
         {/* Ordinal watermark */}
         <span
           className="absolute font-mono select-none pointer-events-none"
-          style={{ top: '1.25rem', right: '1.25rem', fontSize: '0.5625rem', letterSpacing: '0.10em', color: 'rgba(255,255,255,0.07)', fontWeight: 400 }}
+          style={{ top: '1.25rem', right: '1.25rem', fontSize: '0.5625rem', letterSpacing: '0.10em', color: 'rgba(17,18,20,0.07)', fontWeight: 400 }}
           aria-hidden
         >{n}</span>
 
         {/* Icon */}
-        <div className="mb-5 w-9 h-9 rounded-[5px] flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.05)' }}>
-          <Icon size={16} strokeWidth={1.4} style={{ color: 'rgba(245,243,238,0.38)' }} />
+        <div className="mb-5 w-9 h-9 rounded-[5px] flex items-center justify-center" style={{ background: 'rgba(17,18,20,0.05)' }}>
+          <Icon size={16} strokeWidth={1.4} style={{ color: 'rgba(17,18,20,0.38)' }} />
         </div>
 
         {/* Title */}
-        <h3 className="font-display font-normal mb-3" style={{ fontSize: '1.125rem', lineHeight: 1.24, letterSpacing: '-0.016em', color: '#F5F3EE' }}>
+        <h3 className="font-display font-normal mb-3" style={{ fontSize: '1.125rem', lineHeight: 1.24, letterSpacing: '-0.016em', color: '#111214' }}>
           {title}
         </h3>
 
         {/* Body */}
-        <p className="font-body font-light flex-1" style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'rgba(245,243,238,0.50)' }}>
+        <p className="font-body font-light flex-1" style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'rgba(17,18,20,0.54)' }}>
           {body}
         </p>
 
         {/* Footer tag */}
-        <div className="mt-5 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <span className="vcg-label" style={{ fontSize: '0.5625rem' }}>Capability</span>
+        <div className="mt-5 pt-4" style={{ borderTop: '1px solid rgba(17,18,20,0.06)' }}>
+          <span className="vcg-label-dark" style={{ fontSize: '0.5625rem' }}>Capability</span>
         </div>
       </motion.div>
     </motion.div>
@@ -95,19 +98,12 @@ export function Capabilities() {
       id="capabilities"
       ref={ref as React.RefObject<HTMLElement>}
       className="relative section-pad overflow-hidden"
-      style={{ background: '#111214' }}
+      style={{ background: '#F5F3EE' }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} aria-hidden />
-
-      {/* Ghost section ordinal */}
-      <div
-        className="absolute top-0 right-0 font-display font-normal select-none pointer-events-none"
-        style={{ fontSize: 'clamp(12rem, 22vw, 22rem)', lineHeight: 0.85, letterSpacing: '-0.06em', color: 'rgba(255,255,255,0.020)', paddingRight: 'clamp(1rem, 2vw, 2rem)' }}
-        aria-hidden
-      >03</div>
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(17,18,20,0.07)' }} aria-hidden />
 
       <div className="container-site relative z-10">
-        <div className="rule mb-10 md:mb-14" />
+        <div className="rule-dark mb-10 md:mb-14" />
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -116,12 +112,12 @@ export function Capabilities() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14"
         >
           <div>
-            <p className="vcg-label mb-4">What We Do</p>
-            <h2 className="font-display font-normal" style={{ fontSize: 'clamp(2rem, 3.4vw, 3.4rem)', lineHeight: 1.07, letterSpacing: '-0.032em', color: '#F5F3EE', maxWidth: '22ch' }}>
+            <p className="vcg-label-dark mb-4">What We Do</p>
+            <h2 className="font-display font-normal" style={{ fontSize: 'clamp(2rem, 3.4vw, 3.4rem)', lineHeight: 1.07, letterSpacing: '-0.032em', color: '#111214', maxWidth: '22ch' }}>
               Enterprise Capability, On Demand
             </h2>
           </div>
-          <p className="font-body font-light md:text-right" style={{ fontSize: '1rem', lineHeight: 1.80, maxWidth: '42ch', color: 'rgba(245,243,238,0.48)' }}>
+          <p className="font-body font-light md:text-right" style={{ fontSize: '1rem', lineHeight: 1.80, maxWidth: '42ch', color: 'rgba(17,18,20,0.50)' }}>
             From individual specialists to full delivery teams —<br className="hidden md:block" />
             assembled with the precision your initiative requires.
           </p>

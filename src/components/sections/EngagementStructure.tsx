@@ -27,7 +27,7 @@ const STEPS = [
   {
     n: '05',
     title: 'Governance and Visibility',
-    body: 'VCG establishes real-time program intelligence and accountability infrastructure. Leadership sees what is happening. Issues surface before they become problems. Decisions get made.',
+    body: 'VCG establishes ongoing program intelligence and accountability infrastructure. Leadership sees what is happening. Issues surface before they become problems. Decisions get made.',
   },
   {
     n: '06',

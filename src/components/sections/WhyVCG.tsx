@@ -14,12 +14,12 @@ const PRINCIPLES = [
     evidence: 'Our operators work inside your environment — in your tools, alongside your teams, within your governance structure. Not from a presentation room. Not in a weekly call.',
   },
   {
-    claim: 'We stay until outcomes are achieved.',
-    evidence: 'Most consulting engagements conclude when the contract ends. Ours conclude when the outcome is achieved. This is not a slogan. It is the structure of every engagement.',
+    claim: 'We structure engagements around outcomes, not activity.',
+    evidence: 'Most consulting firms conclude when the contract ends. VCG engagements are defined by delivery outcomes, accountability structures, and transition criteria — not by time or deliverables alone.',
   },
   {
     claim: 'Our operators have delivered.',
-    evidence: 'Every VCG professional has led delivery in senior operational roles. They have been accountable for outcomes — not advisors who studied them.',
+    evidence: 'VCG professionals are selected for demonstrated delivery experience and the ability to operate effectively in complex enterprise environments. They have been accountable for outcomes — not advisors who studied them.',
   },
   {
     claim: 'We measure outcomes. Not activities.',
@@ -147,7 +147,8 @@ export function WhyVCG() {
               animate={industriesInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.72, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             >
-              <p className="vcg-label-dark mb-6">Industries</p>
+              <p className="vcg-label-dark mb-4">Selected Sectors</p>
+              <p className="font-body font-light mb-5" style={{ fontSize: '0.75rem', lineHeight: 1.72, color: 'rgba(17,18,20,0.38)' }}>Sectors VCG is positioned to support:</p>
               <div className="space-y-0.5 mb-8">
                 {INDUSTRIES.map((industry, i) => (
                   <motion.div

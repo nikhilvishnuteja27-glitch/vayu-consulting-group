@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 import { staggerContainer, fadeUp } from '@/lib/animations'
 import { useContactModal } from '@/context/ContactModalContext'
 
@@ -84,14 +85,28 @@ export function CTA() {
               </a>
             </motion.div>
 
-            <motion.p
+            <motion.div
               variants={fadeUp}
               custom={4}
-              className="mt-8 font-body font-light"
-              style={{ fontSize: '0.8rem', color: 'rgba(245,243,238,0.18)', letterSpacing: '0.01em' }}
+              className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-5"
             >
-              Confidential. No obligation. North America operations.
-            </motion.p>
+              <p
+                className="font-body font-light"
+                style={{ fontSize: '0.8rem', color: 'rgba(245,243,238,0.18)', letterSpacing: '0.01em' }}
+              >
+                Confidential. No obligation. North America operations.
+              </p>
+              <Link
+                href="/join"
+                className="inline-flex items-center gap-1.5 font-body font-light transition-colors duration-200 group"
+                style={{ fontSize: '0.8rem', color: 'rgba(245,243,238,0.18)', letterSpacing: '0.01em', textDecoration: 'none', whiteSpace: 'nowrap' }}
+                onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.42)'}
+                onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.18)'}
+              >
+                Join the VCG Network
+                <ArrowRight size={11} strokeWidth={1.5} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
     </section>

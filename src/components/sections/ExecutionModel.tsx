@@ -135,10 +135,6 @@ export function ExecutionModel() {
             {/* Branded framework name */}
             <div className="flex items-center gap-3 mb-4">
               <span className="vcg-label-dark">How We Operate</span>
-              <div style={{ height: '1px', width: '24px', background: 'rgba(17,18,20,0.14)' }} />
-              <span className="font-body font-normal" style={{ fontSize: '0.5625rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,18,20,0.30)' }}>
-                Proprietary Framework
-              </span>
             </div>
             <h2
               className="font-display font-normal"

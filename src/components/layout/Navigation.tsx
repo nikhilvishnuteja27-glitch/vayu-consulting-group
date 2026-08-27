@@ -3,27 +3,25 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Menu } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { VCGMark } from '@/components/layout/VCGMark'
 import { useContactModal } from '@/context/ContactModalContext'
 
 const NAV_LINKS = [
-  { label: 'What We Do',   href: '#what-we-deliver', sectionId: 'what-we-deliver' },
-  { label: 'How We Work',  href: '#model',           sectionId: 'model'           },
-  { label: 'Perspectives', href: '#insights',        sectionId: 'insights'        },
+  { label: 'What We Do',  href: '/what-we-do'  },
+  { label: 'How We Work', href: '/how-we-work' },
+  { label: 'About',       href: '/about'       },
+  { label: 'Join VCG',   href: '/join'        },
 ]
 
-function scrollTo(href: string) {
-  if (href === '#home') { window.scrollTo({ top: 0, behavior: 'smooth' }); return }
-  const el = document.getElementById(href.replace('#', ''))
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-}
-
 export function Navigation() {
-  const { openModal }                      = useContactModal()
-  const [scrollY,       setScrollY]       = useState(0)
-  const [mobileOpen,    setMobileOpen]    = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
+  const { openModal }                   = useContactModal()
+  const pathname                        = usePathname()
+  const [scrollY,    setScrollY]        = useState(0)
+  const [mobileOpen, setMobileOpen]     = useState(false)
+  const isHome                          = pathname === '/'
 
   useEffect(() => {
     const handler = () => setScrollY(window.scrollY)
@@ -33,29 +31,18 @@ export function Navigation() {
   }, [])
 
   useEffect(() => {
-    const sectionIds = [...NAV_LINKS.map(l => l.sectionId), 'home']
-    const observers: IntersectionObserver[] = []
-    sectionIds.forEach(id => {
-      const el = document.getElementById(id)
-      if (!el) return
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActiveSection(id) },
-        { threshold: 0.30 }
-      )
-      obs.observe(el)
-      observers.push(obs)
-    })
-    return () => observers.forEach(o => o.disconnect())
-  }, [])
+    setMobileOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
-  // Past the hero (≈ 100vh) → light nav; on hero → transparent/dark
+  // On homepage: past the hero → light nav; on hero → transparent/dark.
+  // On subpages: dark header section → transparent on that section, then light.
   const heroHeight = typeof window !== 'undefined' ? window.innerHeight * 0.82 : 700
-  const isLight  = scrollY > heroHeight
+  const isLight  = isHome ? scrollY > heroHeight : scrollY > 320
   const scrolled = scrollY > 60
 
   return (
@@ -75,9 +62,9 @@ export function Navigation() {
           <div className="flex items-center justify-between h-[68px] md:h-[74px]">
 
             {/* Logo */}
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="cursor-pointer flex items-center gap-3"
+            <Link
+              href="/"
+              className="flex items-center gap-3"
               aria-label="Vayu Consulting Group — Execution Intelligence"
             >
               <VCGMark size={26} variant={isLight ? 'dark' : 'light'} />
@@ -93,24 +80,27 @@ export function Navigation() {
               >
                 VCG
               </span>
-            </button>
+            </Link>
 
             {/* Desktop links */}
             <div className="hidden md:flex items-center gap-9">
-              {NAV_LINKS.map(link => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollTo(link.href)}
-                  className={cn(
-                    isLight ? 'nav-link-dark' : 'nav-link',
-                    isLight
-                      ? activeSection === link.sectionId ? 'nav-link-dark-active' : ''
-                      : activeSection === link.sectionId ? 'nav-link-active' : ''
-                  )}
-                >
-                  {link.label}
-                </button>
-              ))}
+              {NAV_LINKS.map(link => {
+                const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                      isLight ? 'nav-link-dark' : 'nav-link',
+                      isLight
+                        ? isActive ? 'nav-link-dark-active' : ''
+                        : isActive ? 'nav-link-active' : ''
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
             </div>
 
             {/* CTA + hamburger */}
@@ -120,7 +110,7 @@ export function Navigation() {
                 className={cn('hidden md:inline-flex', isLight ? 'btn-dark' : 'btn-primary')}
                 style={{ padding: '0.5rem 1.35rem', fontSize: '0.8rem' }}
               >
-                Contact
+                Discuss Your Initiative
               </button>
 
               <button
@@ -162,29 +152,35 @@ export function Navigation() {
             </div>
 
             <div className="flex flex-col justify-center flex-1 container-site pb-16">
-              {NAV_LINKS.map((link, i) => (
-                <motion.button
-                  key={link.href}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-                  onClick={() => { scrollTo(link.href); setMobileOpen(false) }}
-                  className="text-left py-5 border-b cursor-pointer transition-colors duration-200"
-                  style={{
-                    borderColor: 'rgba(255,255,255,0.07)',
-                    fontSize: 'clamp(1.6rem, 6.5vw, 2.4rem)',
-                    letterSpacing: '-0.022em',
-                    lineHeight: 1.15,
-                    fontFamily: 'var(--font-display-var), serif',
-                    fontWeight: 400,
-                    color: activeSection === link.sectionId ? '#F5F3EE' : 'rgba(245,243,238,0.32)',
-                  }}
-                  onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.color = '#F5F3EE'}
-                  onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.color = activeSection === link.sectionId ? '#F5F3EE' : 'rgba(245,243,238,0.32)'}
-                >
-                  {link.label}
-                </motion.button>
-              ))}
+              {NAV_LINKS.map((link, i) => {
+                const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
+                return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block text-left py-5 border-b transition-colors duration-200"
+                      style={{
+                        borderColor: 'rgba(255,255,255,0.07)',
+                        fontSize: 'clamp(1.6rem, 6.5vw, 2.4rem)',
+                        letterSpacing: '-0.022em',
+                        lineHeight: 1.15,
+                        fontFamily: 'var(--font-display-var), serif',
+                        fontWeight: 400,
+                        color: isActive ? '#F5F3EE' : 'rgba(245,243,238,0.32)',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                )
+              })}
               <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

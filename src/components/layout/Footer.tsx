@@ -1,33 +1,29 @@
 'use client'
 
+import Link from 'next/link'
 import { VCGMark } from '@/components/layout/VCGMark'
 
 const NAV_SECTIONS = [
   {
     label: 'Company',
     links: [
-      { label: 'What We Do',  href: '#what-we-deliver' },
-      { label: 'The Model',   href: '#model'           },
-      { label: 'Why VCG',     href: '#why-vcg'         },
-      { label: 'Perspectives', href: '#insights'       },
+      { label: 'What We Do',  href: '/what-we-do'  },
+      { label: 'How We Work', href: '/how-we-work' },
+      { label: 'About VCG',   href: '/about'       },
+      { label: 'Join VCG',    href: '/join'        },
     ],
   },
   {
     label: 'Engage',
     links: [
-      { label: 'Discuss Your Initiative', href: '#cta'                                        },
-      { label: 'info@vayuconsultinggroup.com', href: 'mailto:info@vayuconsultinggroup.com'   },
-      { label: '(312) 270-0009',       href: 'tel:+13122700009'                              },
+      { label: 'info@vayuconsultinggroup.com', href: 'mailto:info@vayuconsultinggroup.com' },
+      { label: '(312) 270-0009',               href: 'tel:+13122700009'                   },
     ],
   },
 ]
 
-function scrollTo(href: string) {
-  if (href.startsWith('#')) {
-    const el = document.getElementById(href.replace('#', ''))
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
-}
+const linkStyle = { fontSize: '0.875rem', color: 'rgba(245,243,238,0.28)' as const }
+const linkHover = { color: 'rgba(245,243,238,0.62)' as const }
 
 export function Footer() {
   return (
@@ -38,21 +34,21 @@ export function Footer() {
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-2">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="flex items-center gap-3 cursor-pointer mb-5"
+            <Link
+              href="/"
+              className="inline-flex items-center gap-3 mb-5"
               aria-label="Vayu Consulting Group"
             >
               <VCGMark size={22} variant="light" />
               <span className="font-body font-normal" style={{ fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(245,243,238,0.26)' }}>
                 VCG
               </span>
-            </button>
+            </Link>
             <p className="font-body font-light" style={{ fontSize: '0.8rem', lineHeight: 1.80, color: 'rgba(245,243,238,0.22)', maxWidth: '32ch' }}>
               Execution Intelligence for organizations that cannot afford failure.
             </p>
             <p className="mt-4 font-body font-light" style={{ fontSize: '0.75rem', lineHeight: 1.72, color: 'rgba(245,243,238,0.16)', maxWidth: '38ch' }}>
-              North America operations. Global capability network.
+              North America operations.
             </p>
           </div>
 
@@ -63,23 +59,23 @@ export function Footer() {
               <ul className="space-y-3">
                 {section.links.map(link => (
                   <li key={link.label}>
-                    {link.href.startsWith('#') ? (
-                      <button
-                        onClick={() => scrollTo(link.href)}
-                        className="font-body font-light transition-colors duration-200 text-left cursor-pointer"
-                        style={{ fontSize: '0.875rem', color: 'rgba(245,243,238,0.28)' }}
-                        onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.color = 'rgba(245,243,238,0.62)'}
-                        onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.color = 'rgba(245,243,238,0.28)'}
+                    {link.href.startsWith('/') ? (
+                      <Link
+                        href={link.href}
+                        className="font-body font-light transition-colors duration-200"
+                        style={linkStyle}
+                        onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = linkHover.color}
+                        onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = linkStyle.color}
                       >
                         {link.label}
-                      </button>
+                      </Link>
                     ) : (
                       <a
                         href={link.href}
                         className="font-body font-light transition-colors duration-200"
-                        style={{ fontSize: '0.875rem', color: 'rgba(245,243,238,0.28)' }}
-                        onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.62)'}
-                        onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.28)'}
+                        style={linkStyle}
+                        onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = linkHover.color}
+                        onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = linkStyle.color}
                       >
                         {link.label}
                       </a>
@@ -100,7 +96,26 @@ export function Footer() {
             © {new Date().getFullYear()} Vayu Consulting Group. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 flex-wrap">
+            {/* Legal */}
+            <a
+              href="/privacy"
+              className="font-body font-light transition-colors duration-200"
+              style={{ fontSize: '0.6875rem', letterSpacing: '0.06em', color: 'rgba(245,243,238,0.14)' }}
+              onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.38)'}
+              onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.14)'}
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms"
+              className="font-body font-light transition-colors duration-200"
+              style={{ fontSize: '0.6875rem', letterSpacing: '0.06em', color: 'rgba(245,243,238,0.14)' }}
+              onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.38)'}
+              onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.14)'}
+            >
+              Terms of Use
+            </a>
             {/* LinkedIn */}
             <a
               href="https://linkedin.com/company/vayu-consulting-group"

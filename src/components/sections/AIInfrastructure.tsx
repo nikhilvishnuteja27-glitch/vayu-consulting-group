@@ -46,7 +46,7 @@ export function AIInfrastructure() {
   const stackInView = useInView(stackRef, { once: true, margin: '-10% 0px' })
 
   return (
-    <section id="ai" className="relative section-pad overflow-hidden" style={{ background: '#111214' }}>
+    <section id="ai" className="relative section-pad overflow-hidden" style={{ background: '#0B0B0D' }}>
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'rgba(255,255,255,0.06)' }} aria-hidden />
 
       <div className="container-site relative z-10">
