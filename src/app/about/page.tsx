@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Vayu Consulting Group Inc. is an execution consulting firm built to close the gap between strategy and delivered outcomes. What VCG is, why it exists, and how it operates.',
   alternates: {
-    canonical: 'https://vayuconsultinggroup.com/about',
+    canonical: 'https://www.vayuconsultinggroup.com/about',
   },
 }
 

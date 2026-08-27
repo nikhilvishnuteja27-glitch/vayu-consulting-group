@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'The VCG operating model: Execution Intelligence, the Assess–Assemble–Embed–Deliver framework, engagement structure, AI-augmented execution, and what changes after VCG is engaged.',
   alternates: {
-    canonical: 'https://vayuconsultinggroup.com/how-we-work',
+    canonical: 'https://www.vayuconsultinggroup.com/how-we-work',
   },
 }
 

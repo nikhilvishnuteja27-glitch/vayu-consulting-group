@@ -30,7 +30,7 @@ const mono = DM_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vayuconsultinggroup.com'),
+  metadataBase: new URL('https://www.vayuconsultinggroup.com'),
   title: 'Vayu Consulting Group | Execution Intelligence & Enterprise Delivery',
   description: 'Execution Intelligence for organizations that cannot afford failure. VCG embeds senior operators, AI-enabled governance, and delivery infrastructure into critical initiatives until outcomes are achieved.',
   keywords: ['execution intelligence', 'enterprise transformation', 'program recovery', 'consulting', 'delivery'],
@@ -38,11 +38,11 @@ export const metadata: Metadata = {
     title:       'Vayu Consulting Group | Execution Intelligence & Enterprise Delivery',
     description: 'Execution Intelligence for organizations where delivery certainty is non-negotiable.',
     type:        'website',
-    url:         'https://vayuconsultinggroup.com',
+    url:         'https://www.vayuconsultinggroup.com',
     siteName:    'Vayu Consulting Group',
   },
   alternates: {
-    canonical: 'https://vayuconsultinggroup.com',
+    canonical: 'https://www.vayuconsultinggroup.com',
   },
   robots: {
     index:  true,
@@ -55,10 +55,10 @@ const structuredData = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': 'https://vayuconsultinggroup.com/#organization',
+      '@id': 'https://www.vayuconsultinggroup.com/#organization',
       name: 'Vayu Consulting Group',
       legalName: 'Vayu Consulting Group Inc.',
-      url: 'https://vayuconsultinggroup.com',
+      url: 'https://www.vayuconsultinggroup.com',
       email: 'info@vayuconsultinggroup.com',
       telephone: '+13122700009',
       sameAs: ['https://linkedin.com/company/vayu-consulting-group'],
@@ -66,10 +66,10 @@ const structuredData = {
     },
     {
       '@type': 'WebSite',
-      '@id': 'https://vayuconsultinggroup.com/#website',
+      '@id': 'https://www.vayuconsultinggroup.com/#website',
       name: 'Vayu Consulting Group',
-      url: 'https://vayuconsultinggroup.com',
-      publisher: { '@id': 'https://vayuconsultinggroup.com/#organization' },
+      url: 'https://www.vayuconsultinggroup.com',
+      publisher: { '@id': 'https://www.vayuconsultinggroup.com/#organization' },
     },
   ],
 }

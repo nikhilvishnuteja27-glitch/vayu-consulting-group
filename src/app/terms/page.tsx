@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Terms of Use for vayuconsultinggroup.com — governing access to and use of the Vayu Consulting Group website.',
   alternates: {
-    canonical: 'https://vayuconsultinggroup.com/terms',
+    canonical: 'https://www.vayuconsultinggroup.com/terms',
   },
 }
 

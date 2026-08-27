@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'VCG engages through three paths: Consulting & Transformation, Project & Delivery Teams, and Specialized Talent. Each structured around what the initiative actually requires.',
   alternates: {
-    canonical: 'https://vayuconsultinggroup.com/what-we-do',
+    canonical: 'https://www.vayuconsultinggroup.com/what-we-do',
   },
 }
 

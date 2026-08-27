@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Privacy Policy for vayuconsultinggroup.com — how Vayu Consulting Group Inc. collects, uses, and handles personal information.',
   alternates: {
-    canonical: 'https://vayuconsultinggroup.com/privacy',
+    canonical: 'https://www.vayuconsultinggroup.com/privacy',
   },
 }
 

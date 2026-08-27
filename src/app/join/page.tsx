@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'The VCG professional network connects senior operators, transformation executives, program managers, and specialists with enterprise engagements that require demonstrated delivery capability.',
   alternates: {
-    canonical: 'https://vayuconsultinggroup.com/join',
+    canonical: 'https://www.vayuconsultinggroup.com/join',
   },
 }
 

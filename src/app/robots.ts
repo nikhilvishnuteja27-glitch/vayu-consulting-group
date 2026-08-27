@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://vayuconsultinggroup.com/sitemap.xml',
+    sitemap: 'https://www.vayuconsultinggroup.com/sitemap.xml',
   }
 }
