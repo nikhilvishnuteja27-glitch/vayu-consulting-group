@@ -93,7 +93,8 @@ export async function POST(req: NextRequest) {
       }
     )
     if (!tokenRes.ok) {
-      console.error('VCG contact: token acquisition failed', tokenRes.status)
+      const errBody = await tokenRes.json().catch(() => ({})) as { error?: string; error_codes?: number[] }
+      console.error('VCG contact: token acquisition failed', tokenRes.status, errBody.error ?? 'unknown', errBody.error_codes ?? [])
       return NextResponse.json({ error: 'Email service unavailable' }, { status: 503 })
     }
     const { access_token } = (await tokenRes.json()) as { access_token: string }
