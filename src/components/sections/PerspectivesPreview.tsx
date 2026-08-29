@@ -40,9 +40,9 @@ export function PerspectivesPreview() {
             marginBottom: '2.5rem',
           }}
         >
-          <p className="vcg-label-dark">Perspectives</p>
+          <p className="vcg-label-dark">Insights</p>
           <Link
-            href="/perspectives"
+            href="/insights"
             className="font-body"
             style={{
               fontSize: '0.8125rem',
@@ -51,7 +51,7 @@ export function PerspectivesPreview() {
               letterSpacing: '0.01em',
             }}
           >
-            View All Perspectives →
+            All Perspectives →
           </Link>
         </motion.div>
 

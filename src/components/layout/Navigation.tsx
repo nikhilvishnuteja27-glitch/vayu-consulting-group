@@ -10,11 +10,12 @@ import { VCGMark } from '@/components/layout/VCGMark'
 import { useContactModal } from '@/context/ContactModalContext'
 
 const NAV_LINKS = [
-  { label: 'What We Do',    href: '/what-we-do'    },
-  { label: 'How We Work',   href: '/how-we-work'   },
-  { label: 'Perspectives',  href: '/perspectives'  },
-  { label: 'About',         href: '/about'         },
-  { label: 'Join VCG',      href: '/join'          },
+  { label: 'What We Do',             href: '/what-we-do'             },
+  { label: 'Execution Intelligence', href: '/execution-intelligence' },
+  { label: 'How We Work',            href: '/how-we-work'            },
+  { label: 'Insights',               href: '/insights'               },
+  { label: 'About',                  href: '/about'                  },
+  { label: 'Join VCG',               href: '/join'                   },
 ]
 
 export function Navigation() {
@@ -84,9 +85,9 @@ export function Navigation() {
             </Link>
 
             {/* Desktop links */}
-            <div className="hidden md:flex items-center gap-7">
+            <div className="hidden md:flex items-center gap-6">
               {NAV_LINKS.map(link => {
-                const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
+                const isActive = pathname === link.href || pathname.startsWith(link.href + '/') || (link.href === '/insights' && pathname.startsWith('/perspectives/'))
                 return (
                   <Link
                     key={link.href}
@@ -154,7 +155,7 @@ export function Navigation() {
 
             <div className="flex flex-col justify-center flex-1 container-site pb-16">
               {NAV_LINKS.map((link, i) => {
-                const isActive = pathname === link.href || pathname.startsWith(link.href + '/')
+                const isActive = pathname === link.href || pathname.startsWith(link.href + '/') || (link.href === '/insights' && pathname.startsWith('/perspectives/'))
                 return (
                   <motion.div
                     key={link.href}

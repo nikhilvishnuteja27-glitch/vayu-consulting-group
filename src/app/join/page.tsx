@@ -1,156 +1,571 @@
 import type { Metadata } from 'next'
-import type { CSSProperties, ReactNode } from 'react'
 import { TalentForm } from '@/components/sections/TalentForm'
 
 export const metadata: Metadata = {
   title: 'Join VCG — Vayu Consulting Group',
   description:
-    'The VCG professional network connects senior operators, transformation executives, program managers, and specialists with enterprise engagements that require demonstrated delivery capability.',
+    'VCG connects experienced consulting, transformation, delivery, and technology professionals with enterprise initiatives that require demonstrated execution capability. Express your interest in the VCG talent network.',
   alternates: {
     canonical: 'https://www.vayuconsultinggroup.com/join',
   },
+  openGraph: {
+    title: 'Join VCG — Vayu Consulting Group',
+    description:
+      'For professionals who have been accountable for enterprise outcomes. Explore how to work with VCG on consulting, transformation, delivery, and specialized capability engagements.',
+    url: 'https://www.vayuconsultinggroup.com/join',
+    siteName: 'Vayu Consulting Group',
+    type: 'website',
+  },
 }
 
-// ── Style constants ──────────────────────────────────────────
+/* ── Data ────────────────────────────────────────────────────── */
 
-const sectionDiv: CSSProperties = {
-  marginTop: '2.5rem',
-  paddingTop: '2.5rem',
-  borderTop: '1px solid rgba(17,18,20,0.07)',
-}
+const DIMENSIONS = [
+  {
+    name: 'Ownership',
+    body: 'Takes responsibility for outcomes beyond the immediate task. When the path ahead is unclear, creates clarity rather than waiting for it. Does not transfer accountability to process, ambiguity, or the organization.',
+  },
+  {
+    name: 'Judgment',
+    body: 'Can operate effectively when information is incomplete and tradeoffs are real. Knows when to decide, when to escalate, and how to distinguish between productive caution and avoidance.',
+  },
+  {
+    name: 'Execution Discipline',
+    body: 'Turns direction into structured action. Manages complexity without creating administrative overhead. Keeps work moving when the environment resists it.',
+  },
+  {
+    name: 'Communication',
+    body: 'Makes complexity understandable to the people who need to act on it. Adapts precision to the audience. Does not confuse output volume with clarity of message.',
+  },
+  {
+    name: 'Professional Depth',
+    body: 'Brings meaningful functional, technical, program, or domain capability — grounded in direct delivery experience rather than advisory or academic background alone.',
+  },
+  {
+    name: 'Adaptability',
+    body: 'Can operate effectively across different organizations, industries, and enterprise environments without requiring extensive onboarding to become useful.',
+  },
+]
 
-const headingStyle: CSSProperties = {
-  fontWeight: 500,
-  fontSize: '0.9375rem',
-  letterSpacing: '-0.008em',
-  color: '#111214',
-  marginBottom: '1rem',
-}
+const CAPABILITY_AREAS = [
+  {
+    group: 'Transformation & Program Leadership',
+    items: [
+      'Transformation leadership and program direction',
+      'Program and project management',
+      'PMO leadership and governance infrastructure',
+      'Business analysis and requirements definition',
+      'Organizational change and adoption',
+      'Workstream delivery leadership',
+    ],
+  },
+  {
+    group: 'Technology & Digital Delivery',
+    items: [
+      'Enterprise technology and systems implementation',
+      'Cloud migration and infrastructure programs',
+      'Data and analytics delivery',
+      'AI adoption and deployment',
+      'Product and platform delivery',
+      'Enterprise architecture',
+      'Engineering delivery leadership',
+    ],
+  },
+  {
+    group: 'Functional & Specialized Expertise',
+    items: [
+      'Finance, operations, and supply chain transformation',
+      'Risk, compliance, and regulatory programs',
+      'HR and talent programs',
+      'Strategy-to-execution translation',
+      'Specialized domain and industry leadership',
+    ],
+  },
+]
 
-const pStyle: CSSProperties = {
-  fontSize: '0.9375rem',
-  lineHeight: 1.82,
-  color: 'rgba(17,18,20,0.58)',
-  marginTop: '0.75rem',
-}
+const ENGAGEMENT_MODELS = [
+  {
+    name: 'Consulting Engagement',
+    body: 'Work directly on VCG-led consulting and transformation engagements as an embedded member of the delivery team. VCG manages client accountability. You own the workstream or domain assigned.',
+  },
+  {
+    name: 'Project & Delivery Assignment',
+    body: 'Placed within a client initiative as part of a purpose-built delivery team assembled by VCG. Scope is project-defined. Duration is set by initiative requirements.',
+  },
+  {
+    name: 'Specialized Contribution',
+    body: 'Deployed for a specific domain, functional, or technical need within an initiative where specialized depth is the primary requirement. Engagement is structured around the defined need.',
+  },
+]
 
-const liStyle: CSSProperties = {
-  fontSize: '0.9375rem',
-  lineHeight: 1.82,
-  color: 'rgba(17,18,20,0.58)',
-  marginBottom: '0.5rem',
-}
+const STANDARD = [
+  {
+    claim: 'Own the outcome, not just the task.',
+    body: 'Delivery accountability cannot be transferred to process, meeting cadence, or organizational complexity. What you are accountable for, you own — from start to verified completion.',
+  },
+  {
+    claim: 'Surface issues before they become problems.',
+    body: 'Early, accurate visibility is a professional obligation — not an optional leadership style. An issue identified late costs more to resolve and compromises the people who needed to know sooner.',
+  },
+  {
+    claim: 'Communicate with precision.',
+    body: 'The people around you need accurate information to make good decisions. Ambiguity created by imprecise communication is a delivery risk that compounds.',
+  },
+  {
+    claim: 'Work across organizational boundaries.',
+    body: 'Most execution breakdowns cross functional lines. The ability to operate effectively with people who do not report to you is not a soft skill — it is a delivery requirement.',
+  },
+  {
+    claim: 'Use evidence, not optimism.',
+    body: 'Progress is assessed against observable fact, not the plan as intended. Optimism without evidence is a form of risk concealment that erodes the trust the engagement depends on.',
+  },
+  {
+    claim: 'Leave the environment stronger.',
+    body: 'Clients and teams you work within should have better capability, process, or structure after the engagement than before it. The work does not leave with you.',
+  },
+]
 
-function S({ n, title, children, first }: { n: string; title: string; children: ReactNode; first?: boolean }) {
-  return (
-    <div style={first ? undefined : sectionDiv}>
-      <h2 className="font-body" style={headingStyle}>{n}.&nbsp; {title}</h2>
-      {children}
-    </div>
-  )
-}
+const EXPECTATIONS = [
+  {
+    n: '01',
+    text: 'Clear engagement context before commitment. VCG will provide accurate information about the engagement, client environment, and scope before asking for your commitment.',
+  },
+  {
+    n: '02',
+    text: 'Defined role and accountability. Before any engagement begins, your scope of ownership, reporting structure, and expectations will be agreed upon and documented.',
+  },
+  {
+    n: '03',
+    text: 'Professional communication throughout. VCG will communicate honestly about the status of any opportunity — including when it does not proceed or when timing shifts.',
+  },
+  {
+    n: '04',
+    text: 'Respect for professional expertise. VCG engages professionals for their capability. That expertise is the starting point, not a position to be overridden.',
+  },
+  {
+    n: '05',
+    text: 'Transparent next steps. After your profile is submitted, you will know what to expect, including realistic timelines for review and follow-up.',
+  },
+  {
+    n: '06',
+    text: 'No commitment without clarity. VCG will not ask you to agree to an engagement without clarity on the client, scope, structure, and terms.',
+  },
+]
 
-function P({ children }: { children: ReactNode }) {
-  return <p className="font-body font-light" style={pStyle}>{children}</p>
-}
-
-// ── Page ─────────────────────────────────────────────────────
+/* ── Page ────────────────────────────────────────────────────── */
 
 export default function JoinPage() {
   return (
     <>
-      {/* Dark page header */}
-      <section style={{ background: '#0B0B0D', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      {/* ── 1. Hero — Obsidian ───────────────────────────── */}
+      <section style={{ background: '#0B0B0D', overflow: 'hidden', position: 'relative' }}>
+        {/* Diagonal accent line — structural, restrained */}
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            top: 0,
+            right: '8%',
+            bottom: 0,
+            width: '1px',
+            background: 'linear-gradient(180deg, transparent 0%, rgba(200,169,110,0.12) 40%, rgba(200,169,110,0.12) 60%, transparent 100%)',
+          }}
+        />
         <div
           className="container-site"
-          style={{
-            paddingTop: 'clamp(8rem, 14vw, 12rem)',
-            paddingBottom: 'clamp(3.5rem, 5vw, 5rem)',
-          }}
+          style={{ paddingTop: 'clamp(8rem,14vw,12rem)', paddingBottom: 'clamp(4rem,6vw,6rem)', position: 'relative', zIndex: 1 }}
         >
-          <p className="vcg-label" style={{ marginBottom: '1.25rem' }}>Professional Network</p>
+          <p className="vcg-label" style={{ marginBottom: '1.75rem' }}>Join VCG</p>
           <h1
             className="font-display font-normal"
             style={{
-              fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
-              lineHeight: 1.06,
-              letterSpacing: '-0.030em',
+              fontSize: 'clamp(2.6rem, 4.6vw, 5rem)',
+              lineHeight: 1.04,
+              letterSpacing: '-0.038em',
               color: '#F5F3EE',
-              marginBottom: '1.25rem',
-              maxWidth: '22ch',
+              marginBottom: '1.5rem',
+              maxWidth: '20ch',
             }}
           >
-            Join the VCG Network
+            The work VCG takes on demands people who can own it.
           </h1>
+          <div
+            style={{
+              width: 'clamp(2rem,4vw,3.5rem)',
+              height: '1px',
+              background: 'rgba(200,169,110,0.40)',
+              marginBottom: '1.5rem',
+            }}
+            aria-hidden
+          />
           <p
             className="font-body font-light"
-            style={{ fontSize: '1rem', lineHeight: 1.78, color: 'rgba(245,243,238,0.44)', maxWidth: '50ch' }}
+            style={{ fontSize: '1rem', lineHeight: 1.82, color: 'rgba(245,243,238,0.42)', maxWidth: '54ch' }}
           >
-            VCG builds its engagements from a network of senior professionals with verified delivery experience. If you have operated at the level where execution accountability is real, we would like to hear from you.
+            VCG connects experienced consulting, transformation, delivery, and technology professionals with enterprise initiatives that require demonstrated execution capability. This is not a job board. It is a professional relationship built around the quality of the work.
           </p>
         </div>
       </section>
 
-      {/* Informational content */}
-      <section style={{ background: '#FFFFFF' }}>
+      {/* ── 2. Who VCG Looks For — Warm White ────────────── */}
+      <section style={{ background: '#F5F3EE', borderTop: '1px solid rgba(17,18,20,0.07)' }}>
         <div
           className="container-site"
-          style={{
-            paddingTop: 'clamp(3.5rem, 6vw, 5.5rem)',
-            paddingBottom: 'clamp(3rem, 5vw, 4.5rem)',
-          }}
+          style={{ paddingTop: 'clamp(4rem,6vw,6rem)', paddingBottom: 'clamp(4rem,6vw,6rem)' }}
         >
-          <div style={{ maxWidth: '720px' }}>
-
-            <S n="1" title="What the VCG Network Is" first>
-              <P>The VCG professional network is a roster of senior operators, transformation executives, program managers, delivery leaders, and specialists whose experience and capabilities are reviewed for alignment with VCG&rsquo;s delivery standards and client requirements.</P>
-              <P>Network membership is not a job offer or a guarantee of placement. It is a professional relationship that positions the right people for the right engagements when those engagements arise. Placement depends on actual client and project demand — not on submission alone.</P>
-            </S>
-
-            <S n="2" title="Who VCG Looks For">
-              <P>VCG seeks professionals who have been directly accountable for delivering outcomes — not advising on them, not supporting those who are, but personally responsible for results in senior operational roles.</P>
-              <P>Relevant experience typically includes one or more of:</P>
-              <ul style={{ marginTop: '1rem', paddingLeft: '1.375rem', listStyleType: 'disc' }}>
-                <li style={liStyle}>Enterprise transformation and program leadership</li>
-                <li style={liStyle}>Program recovery and delivery reset</li>
-                <li style={liStyle}>AI adoption, enterprise technology delivery, and digital transformation</li>
-                <li style={liStyle}>Operating model design and operational scaling</li>
-                <li style={liStyle}>Transformation governance, PMO leadership, and accountability infrastructure</li>
-                <li style={liStyle}>Organizational change management at scale</li>
-                <li style={{ ...liStyle, marginBottom: 0 }}>Workstream and domain delivery leadership within complex programs</li>
-              </ul>
-              <P>Senior experience is required. VCG engagements are high-stakes, time-sensitive, and accountability-driven.</P>
-            </S>
-
-            <S n="3" title="Candidate Expectations">
-              <P>VCG&rsquo;s operating standard is direct accountability for outcomes. Network professionals are expected to operate with clarity about what they own, make decisions rather than defer them, and remain present and accountable through to delivery.</P>
-              <P>Engagements are project-based. Duration and structure are defined by each initiative. VCG does not represent ongoing employment.</P>
-            </S>
-
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 lg:gap-20">
+            {/* Left */}
+            <div>
+              <p className="vcg-label-dark" style={{ marginBottom: '1.25rem' }}>Professional Profile</p>
+              <h2
+                className="font-display font-normal"
+                style={{
+                  fontSize: 'clamp(1.6rem, 2.4vw, 2.4rem)',
+                  lineHeight: 1.10,
+                  letterSpacing: '-0.024em',
+                  color: '#111214',
+                  maxWidth: '22ch',
+                  marginBottom: '1.25rem',
+                }}
+              >
+                Six characteristics that define the professionals VCG seeks.
+              </h2>
+              <p
+                className="font-body font-light"
+                style={{ fontSize: '0.875rem', lineHeight: 1.80, color: 'rgba(17,18,20,0.46)', maxWidth: '32ch' }}
+              >
+                These are not assessment criteria or HR competencies. They are the observable qualities that determine whether a professional can operate effectively inside the kind of work VCG does.
+              </p>
+            </div>
+            {/* Right — grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
+              {DIMENSIONS.map((d, i) => (
+                <div
+                  key={d.name}
+                  style={{
+                    padding: '1.5rem 0',
+                    paddingRight: i % 2 === 0 ? '2rem' : '0',
+                    paddingLeft: i % 2 === 1 ? '2rem' : '0',
+                    borderTop: '1px solid rgba(17,18,20,0.08)',
+                    borderLeft: i % 2 === 1 ? '1px solid rgba(17,18,20,0.08)' : 'none',
+                  }}
+                >
+                  <p
+                    className="font-body font-medium"
+                    style={{ fontSize: '0.875rem', color: '#111214', letterSpacing: '-0.005em', marginBottom: '0.625rem' }}
+                  >
+                    {d.name}
+                  </p>
+                  <p
+                    className="font-body font-light"
+                    style={{ fontSize: '0.875rem', lineHeight: 1.80, color: 'rgba(17,18,20,0.50)' }}
+                  >
+                    {d.body}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Candidate submission form */}
+      {/* ── 3. Capability Landscape — White ──────────────── */}
+      <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,18,20,0.08)' }}>
+        <div
+          className="container-site"
+          style={{ paddingTop: 'clamp(4rem,6vw,6rem)', paddingBottom: 'clamp(4rem,6vw,6rem)' }}
+        >
+          <div style={{ marginBottom: '2.5rem' }}>
+            <p className="vcg-label-dark" style={{ marginBottom: '1.25rem' }}>Capability Areas</p>
+            <h2
+              className="font-display font-normal"
+              style={{
+                fontSize: 'clamp(1.6rem, 2.4vw, 2.4rem)',
+                lineHeight: 1.10,
+                letterSpacing: '-0.024em',
+                color: '#111214',
+                marginBottom: '0.875rem',
+                maxWidth: '36ch',
+              }}
+            >
+              Where VCG may engage specialized professionals.
+            </h2>
+            <p
+              className="font-body font-light"
+              style={{ fontSize: '0.875rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.44)', maxWidth: '58ch' }}
+            >
+              This represents the landscape of capability VCG&rsquo;s work may require — not a current listing of open roles. Specific engagement opportunities depend on active client and program demand.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+            {CAPABILITY_AREAS.map((area, ai) => (
+              <div
+                key={area.group}
+                style={{
+                  paddingTop: '1.75rem',
+                  paddingBottom: '1.75rem',
+                  paddingRight: '2rem',
+                  paddingLeft: ai > 0 ? '2rem' : '0',
+                  borderTop: '2px solid rgba(17,18,20,0.10)',
+                  borderLeft: ai > 0 ? '1px solid rgba(17,18,20,0.07)' : 'none',
+                }}
+              >
+                <p
+                  className="font-body font-medium"
+                  style={{ fontSize: '0.75rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#111214', marginBottom: '1rem' }}
+                >
+                  {area.group}
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+                  {area.items.map((item) => (
+                    <div
+                      key={item}
+                      style={{
+                        padding: '0.5rem 0',
+                        borderTop: '1px solid rgba(17,18,20,0.05)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.625rem',
+                      }}
+                    >
+                      <div
+                        style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'rgba(17,18,20,0.20)', flexShrink: 0 }}
+                        aria-hidden
+                      />
+                      <p
+                        className="font-body font-light"
+                        style={{ fontSize: '0.875rem', lineHeight: 1.62, color: 'rgba(17,18,20,0.54)' }}
+                      >
+                        {item}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 4. Engagement Models — Carbon ────────────────── */}
+      <section style={{ background: '#111214', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div
+          className="container-site"
+          style={{ paddingTop: 'clamp(4rem,6vw,6rem)', paddingBottom: 'clamp(4rem,6vw,6rem)' }}
+        >
+          <p className="vcg-label" style={{ marginBottom: '1.25rem' }}>Engagement Structure</p>
+          <h2
+            className="font-display font-normal"
+            style={{
+              fontSize: 'clamp(1.7rem, 2.6vw, 2.7rem)',
+              lineHeight: 1.10,
+              letterSpacing: '-0.026em',
+              color: '#F5F3EE',
+              marginBottom: '0.875rem',
+              maxWidth: '28ch',
+            }}
+          >
+            Three ways professionals may work with VCG.
+          </h2>
+          <p
+            className="font-body font-light"
+            style={{ fontSize: '0.9375rem', lineHeight: 1.78, color: 'rgba(245,243,238,0.38)', maxWidth: '54ch', marginBottom: '3rem' }}
+          >
+            Relationship structure, duration, and terms depend on the specific engagement. VCG does not guarantee placement, ongoing assignment, or specific engagement type. All arrangements are confirmed in writing before engagement begins.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+            {ENGAGEMENT_MODELS.map((m, i) => (
+              <div
+                key={m.name}
+                style={{
+                  paddingTop: '1.75rem',
+                  paddingBottom: '1.75rem',
+                  paddingRight: '2rem',
+                  paddingLeft: i > 0 ? '2rem' : '0',
+                  borderTop: '1px solid rgba(255,255,255,0.07)',
+                  borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                }}
+              >
+                <p
+                  className="font-body font-medium"
+                  style={{ fontSize: '0.875rem', color: '#F5F3EE', letterSpacing: '-0.004em', marginBottom: '0.75rem' }}
+                >
+                  {m.name}
+                </p>
+                <p
+                  className="font-body font-light"
+                  style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'rgba(245,243,238,0.44)' }}
+                >
+                  {m.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. VCG Talent Standard — Obsidian ────────────── */}
+      <section style={{ background: '#0B0B0D', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div
+          className="container-site"
+          style={{ paddingTop: 'clamp(4rem,6vw,6rem)', paddingBottom: 'clamp(4rem,6vw,6rem)' }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 lg:gap-20">
+            <div>
+              <p className="vcg-label" style={{ marginBottom: '1.25rem' }}>The Standard</p>
+              <h2
+                className="font-display font-normal"
+                style={{
+                  fontSize: 'clamp(1.6rem, 2.4vw, 2.4rem)',
+                  lineHeight: 1.10,
+                  letterSpacing: '-0.024em',
+                  color: '#F5F3EE',
+                  maxWidth: '22ch',
+                  marginBottom: '1.25rem',
+                }}
+              >
+                What representing VCG requires.
+              </h2>
+              <p
+                className="font-body font-light"
+                style={{ fontSize: '0.875rem', lineHeight: 1.80, color: 'rgba(245,243,238,0.34)', maxWidth: '32ch' }}
+              >
+                These are professional expectations — not aspirational values. They apply to every engagement VCG undertakes.
+              </p>
+            </div>
+
+            <div>
+              {STANDARD.map((s, i) => (
+                <div
+                  key={s.claim}
+                  style={{
+                    borderTop: '1px solid rgba(255,255,255,0.06)',
+                    paddingTop: '1.375rem',
+                    paddingBottom: '1.375rem',
+                    display: 'grid',
+                    gridTemplateColumns: '1fr',
+                    gap: '0.5rem',
+                  }}
+                  className="md:grid-cols-[240px_1fr] md:gap-10"
+                >
+                  <p
+                    className="font-body font-medium"
+                    style={{ fontSize: '0.875rem', color: '#F5F3EE', letterSpacing: '-0.004em', lineHeight: 1.35 }}
+                  >
+                    {s.claim}
+                  </p>
+                  <p
+                    className="font-body font-light"
+                    style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'rgba(245,243,238,0.44)' }}
+                  >
+                    {s.body}
+                  </p>
+                </div>
+              ))}
+              <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 6. What to Expect — Warm White ───────────────── */}
       <section style={{ background: '#F5F3EE', borderTop: '1px solid rgba(17,18,20,0.07)' }}>
         <div
           className="container-site"
-          style={{
-            paddingTop: 'clamp(3.5rem, 6vw, 5.5rem)',
-            paddingBottom: 'clamp(4.5rem, 8vw, 7.5rem)',
-          }}
+          style={{ paddingTop: 'clamp(4rem,6vw,6rem)', paddingBottom: 'clamp(4rem,6vw,6rem)' }}
+        >
+          <p className="vcg-label-dark" style={{ marginBottom: '1.25rem' }}>What You Should Expect</p>
+          <h2
+            className="font-display font-normal"
+            style={{
+              fontSize: 'clamp(1.6rem, 2.4vw, 2.4rem)',
+              lineHeight: 1.10,
+              letterSpacing: '-0.024em',
+              color: '#111214',
+              marginBottom: '0.875rem',
+              maxWidth: '28ch',
+            }}
+          >
+            Six commitments VCG makes to the professionals it works with.
+          </h2>
+          <p
+            className="font-body font-light"
+            style={{ fontSize: '0.875rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.44)', maxWidth: '54ch', marginBottom: '2.5rem' }}
+          >
+            The relationship must not be one-directional. These are the commitments VCG holds itself to in every professional engagement — independent of engagement type or duration.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
+            {EXPECTATIONS.map((e, i) => (
+              <div
+                key={e.n}
+                style={{
+                  paddingTop: '1.5rem',
+                  paddingBottom: '1.5rem',
+                  paddingRight: i % 2 === 0 ? '3rem' : '0',
+                  paddingLeft: i % 2 === 1 ? '3rem' : '0',
+                  borderTop: '1px solid rgba(17,18,20,0.08)',
+                  borderLeft: i % 2 === 1 ? '1px solid rgba(17,18,20,0.08)' : 'none',
+                  display: 'grid',
+                  gridTemplateColumns: '28px 1fr',
+                  gap: '0.875rem',
+                  alignItems: 'start',
+                }}
+              >
+                <span
+                  className="font-mono"
+                  style={{ fontSize: '0.375rem', letterSpacing: '0.14em', color: 'rgba(17,18,20,0.22)', paddingTop: '0.18rem' }}
+                >
+                  {e.n}
+                </span>
+                <p
+                  className="font-body font-light"
+                  style={{ fontSize: '0.875rem', lineHeight: 1.82, color: 'rgba(17,18,20,0.52)' }}
+                >
+                  {e.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 7. Expression of Interest + Form — White ──────── */}
+      <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,18,20,0.08)' }}>
+        <div
+          className="container-site"
+          style={{ paddingTop: 'clamp(4rem,6vw,6rem)', paddingBottom: 'clamp(5rem,8vw,7rem)' }}
         >
           <div style={{ maxWidth: '760px' }}>
-            <p className="vcg-label-dark" style={{ marginBottom: '1.25rem' }}>Submit Your Profile</p>
+            <p className="vcg-label-dark" style={{ marginBottom: '1.25rem' }}>Join the VCG Talent Network</p>
             <h2
               className="font-display font-normal"
-              style={{ fontSize: 'clamp(1.5rem, 2.4vw, 2.25rem)', lineHeight: 1.1, letterSpacing: '-0.022em', color: '#111214', marginBottom: '0.875rem', maxWidth: '30ch' }}
+              style={{
+                fontSize: 'clamp(1.6rem, 2.4vw, 2.4rem)',
+                lineHeight: 1.10,
+                letterSpacing: '-0.022em',
+                color: '#111214',
+                marginBottom: '0.875rem',
+                maxWidth: '30ch',
+              }}
             >
               Express your interest.
             </h2>
-            <p className="font-body font-light" style={{ fontSize: '0.9375rem', lineHeight: 1.80, color: 'rgba(17,18,20,0.52)', marginBottom: '2.5rem', maxWidth: '54ch' }}>
-              All submissions are reviewed. We respond to profiles that align with current and anticipated engagement needs. All inquiries are treated confidentially.
+            <p
+              className="font-body font-light"
+              style={{ fontSize: '0.9375rem', lineHeight: 1.80, color: 'rgba(17,18,20,0.50)', marginBottom: '0.625rem', maxWidth: '54ch' }}
+            >
+              All submissions are reviewed against current and anticipated engagement requirements. VCG will be in contact if there is a relevant match.
             </p>
+            <p
+              className="font-body font-light"
+              style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: 'rgba(17,18,20,0.36)', marginBottom: '2.5rem', maxWidth: '54ch' }}
+            >
+              Submission does not constitute acceptance into the network, a guarantee of placement, guaranteed review, or guaranteed response. All inquiries are treated confidentially.
+            </p>
+
             <TalentForm />
           </div>
         </div>

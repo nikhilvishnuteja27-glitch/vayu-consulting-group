@@ -23,6 +23,15 @@ export const articleH2: CSSProperties = {
   marginBottom: '0.25rem',
 }
 
+export const articleH3: CSSProperties = {
+  fontWeight: 500,
+  fontSize: '0.9375rem',
+  letterSpacing: '-0.008em',
+  color: '#111214',
+  marginTop: '2rem',
+  marginBottom: '0.125rem',
+}
+
 export const articlePull: CSSProperties = {
   fontSize: 'clamp(1.05rem, 1.4vw, 1.2rem)',
   lineHeight: 1.6,
@@ -49,6 +58,14 @@ export function H2({ children }: { children: ReactNode }) {
     <h2 className="font-body" style={articleH2}>
       {children}
     </h2>
+  )
+}
+
+export function H3({ children }: { children: ReactNode }) {
+  return (
+    <h3 className="font-body" style={articleH3}>
+      {children}
+    </h3>
   )
 }
 
@@ -115,7 +132,7 @@ function ArticleCTA() {
         Discuss Your Initiative
       </button>
       <Link
-        href="/perspectives"
+        href="/insights"
         className="font-body"
         style={{ fontSize: '0.875rem', color: 'rgba(17,18,20,0.50)', textDecoration: 'none' }}
       >
@@ -134,7 +151,7 @@ interface ArticleLayoutProps {
 
 export function ArticleLayout({ perspective, children }: ArticleLayoutProps) {
   return (
-    <>
+    <article>
       {/* Dark header */}
       <section style={{ background: '#0B0B0D', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div
@@ -147,11 +164,11 @@ export function ArticleLayout({ perspective, children }: ArticleLayoutProps) {
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 mb-8" style={{ opacity: 0.4 }}>
             <Link
-              href="/perspectives"
+              href="/insights"
               className="font-body"
               style={{ fontSize: '0.75rem', letterSpacing: '0.10em', textTransform: 'uppercase', color: '#F5F3EE', textDecoration: 'none' }}
             >
-              Perspectives
+              Insights
             </Link>
             <span style={{ color: 'rgba(245,243,238,0.4)', fontSize: '0.75rem' }}>·</span>
             <span className="font-mono" style={{ fontSize: '0.75rem', color: 'rgba(245,243,238,0.6)', letterSpacing: '0.05em' }}>
@@ -183,7 +200,7 @@ export function ArticleLayout({ perspective, children }: ArticleLayoutProps) {
               marginBottom: '2rem',
             }}
           >
-            {perspective.deck}
+            {perspective.subtitle}
           </p>
 
           <div className="flex items-center gap-4">
@@ -213,6 +230,6 @@ export function ArticleLayout({ perspective, children }: ArticleLayoutProps) {
           </div>
         </div>
       </section>
-    </>
+    </article>
   )
 }

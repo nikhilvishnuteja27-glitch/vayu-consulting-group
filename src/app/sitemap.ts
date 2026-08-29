@@ -11,6 +11,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${base}/execution-intelligence`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
       url: `${base}/what-we-do`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -35,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${base}/perspectives`,
+      url: `${base}/insights`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
@@ -44,19 +50,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}/perspectives/execution-intelligence`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
     },
     {
-      url: `${base}/perspectives/transformation-stalls`,
+      url: `${base}/perspectives/transformation-stall`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
     },
     {
-      url: `${base}/perspectives/ai-accountability`,
+      url: `${base}/perspectives/ai-execution-accountability`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       url: `${base}/privacy`,

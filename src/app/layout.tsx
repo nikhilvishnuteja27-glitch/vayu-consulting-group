@@ -6,6 +6,7 @@ import { Footer }                from '@/components/layout/Footer'
 import { ScrollProgress }        from '@/components/layout/ScrollProgress'
 import { ContactModalProvider }  from '@/context/ContactModalContext'
 import { ContactModalRoot }      from '@/components/layout/ContactModalRoot'
+import { MotionProvider }        from '@/components/layout/MotionProvider'
 
 const display = Instrument_Serif({
   weight: ['400'],
@@ -96,14 +97,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to main content
         </a>
-        <ContactModalProvider>
-          <ScrollProgress />
-          <Navigation />
-          <main id="main-content">{children}</main>
-          <Footer />
-          {/* Single ContactModal instance for the entire site */}
-          <ContactModalRoot />
-        </ContactModalProvider>
+        <MotionProvider>
+          <ContactModalProvider>
+            <ScrollProgress />
+            <Navigation />
+            <main id="main-content">{children}</main>
+            <Footer />
+            {/* Single ContactModal instance for the entire site */}
+            <ContactModalRoot />
+          </ContactModalProvider>
+        </MotionProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
