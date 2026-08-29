@@ -137,7 +137,7 @@ export function Footer() {
 
             {/* Join the network — subtle, in footer only */}
             <a
-              href="mailto:careers@vayuconsultinggroup.com"
+              href="mailto:info@vayuconsultinggroup.com"
               className="font-body font-light transition-colors duration-200"
               style={{ fontSize: '0.6875rem', letterSpacing: '0.06em', color: 'rgba(245,243,238,0.14)' }}
               onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(245,243,238,0.38)'}

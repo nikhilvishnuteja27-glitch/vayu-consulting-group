@@ -84,20 +84,20 @@ export async function POST(req: NextRequest) {
             </div>
             <table style="width:100%;border-collapse:collapse;font-size:15px">
               ${row('Name', name)}
-              ${row('Email', `<a href="mailto:${escapeHtml(email)}" style="color:#4F6FFF">${escapeHtml(email)}</a>`)}
+              <tr><td style="padding:8px 0;color:#666;width:160px;font-weight:600;vertical-align:top">Email</td><td style="padding:8px 0"><a href="mailto:${escapeHtml(email)}" style="color:#4F6FFF">${escapeHtml(email)}</a></td></tr>
               ${row('Phone', phone)}
               ${row('Location', location)}
               ${row('Primary Role', primaryRole)}
               ${row('Experience', safeYears)}
               ${row('Engagement', safeEngagement)}
               ${row('Availability', safeAvailability)}
-              ${linkedIn ? row('LinkedIn', `<a href="${escapeHtml(linkedIn)}" style="color:#4F6FFF">${escapeHtml(linkedIn)}</a>`) : ''}
+              ${linkedIn ? `<tr><td style="padding:8px 0;color:#666;width:160px;font-weight:600;vertical-align:top">LinkedIn</td><td style="padding:8px 0"><a href="${escapeHtml(linkedIn)}" style="color:#4F6FFF">${escapeHtml(linkedIn)}</a></td></tr>` : ''}
             </table>
             <div style="margin-top:24px">
               <p style="font-weight:600;color:#666;margin-bottom:8px">Core Skills &amp; Experience</p>
               <div style="background:#f5f7fb;padding:16px;border-radius:4px;white-space:pre-wrap;font-size:15px;line-height:1.6">${escapeHtml(String(coreSkills))}</div>
             </div>
-            <p style="margin-top:24px;font-size:12px;color:#aaa">Reply directly to this email to respond to ${escapeHtml(name)}. Resume may follow separately to careers@vayuconsultinggroup.com.</p>
+            <p style="margin-top:24px;font-size:12px;color:#aaa">Reply directly to this email to respond to ${escapeHtml(name)}. Resume may follow separately to info@vayuconsultinggroup.com.</p>
           </div>`
 
   try {

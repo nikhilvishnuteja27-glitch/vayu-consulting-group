@@ -122,9 +122,9 @@ export function TalentForm() {
             Thank you for your interest in the VCG professional network. We review all submissions and will be in touch if there is a relevant engagement match.
           </p>
           <p className="font-body font-light mt-4" style={{ fontSize: '0.875rem', color: 'rgba(17,18,20,0.36)', lineHeight: 1.72 }}>
-            Please send your resume to{' '}
-            <a href="mailto:careers@vayuconsultinggroup.com" style={{ color: '#111214', textDecoration: 'underline', textDecorationColor: 'rgba(17,18,20,0.28)' }}>
-              careers@vayuconsultinggroup.com
+            If you would like to share a resume, please send it to{' '}
+            <a href="mailto:info@vayuconsultinggroup.com" style={{ color: '#111214', textDecoration: 'underline', textDecorationColor: 'rgba(17,18,20,0.28)' }}>
+              info@vayuconsultinggroup.com
             </a>{' '}
             with your name in the subject line.
           </p>
@@ -219,8 +219,8 @@ export function TalentForm() {
             <p className="font-body font-light" style={{ fontSize: '0.8125rem', lineHeight: 1.72, color: 'rgba(17,18,20,0.50)' }}>
               <strong style={{ fontWeight: 500, color: '#111214' }}>Resume / CV:</strong>{' '}
               After submitting this form, please email your resume to{' '}
-              <a href="mailto:careers@vayuconsultinggroup.com" style={{ color: '#111214', textDecoration: 'underline', textDecorationColor: 'rgba(17,18,20,0.28)' }}>
-                careers@vayuconsultinggroup.com
+              <a href="mailto:info@vayuconsultinggroup.com" style={{ color: '#111214', textDecoration: 'underline', textDecorationColor: 'rgba(17,18,20,0.28)' }}>
+                info@vayuconsultinggroup.com
               </a>{' '}
               — include your name in the subject line.
             </p>
@@ -229,7 +229,7 @@ export function TalentForm() {
           {status === 'error' && (
             <p role="alert" className="font-body font-light" style={{ fontSize: '0.8125rem', color: 'rgba(180,40,40,0.85)' }}>
               Submission failed. Please email us directly at{' '}
-              <a href="mailto:careers@vayuconsultinggroup.com" style={{ textDecoration: 'underline' }}>careers@vayuconsultinggroup.com</a>.
+              <a href="mailto:info@vayuconsultinggroup.com" style={{ textDecoration: 'underline' }}>info@vayuconsultinggroup.com</a>.
             </p>
           )}
 
