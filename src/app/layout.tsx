@@ -7,6 +7,7 @@ import { ScrollProgress }        from '@/components/layout/ScrollProgress'
 import { ContactModalProvider }  from '@/context/ContactModalContext'
 import { ContactModalRoot }      from '@/components/layout/ContactModalRoot'
 import { MotionProvider }        from '@/components/layout/MotionProvider'
+import { GoogleAnalytics }       from '@/components/analytics/GoogleAnalytics'
 
 const display = Instrument_Serif({
   weight: ['400'],
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to main content
         </a>
+        <GoogleAnalytics />
         <MotionProvider>
           <ContactModalProvider>
             <ScrollProgress />
