@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.vayuconsultinggroup.com/privacy',
   },
+  openGraph: {
+    title: 'Privacy Policy — Vayu Consulting Group',
+    description:
+      'Privacy Policy for vayuconsultinggroup.com — how Vayu Consulting Group Inc. collects, uses, and handles personal information.',
+    url: 'https://www.vayuconsultinggroup.com/privacy',
+    type: 'website',
+  },
 }
 
 // ── Style constants ──────────────────────────────────────────

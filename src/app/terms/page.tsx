@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.vayuconsultinggroup.com/terms',
   },
+  openGraph: {
+    title: 'Terms of Use — Vayu Consulting Group',
+    description:
+      'Terms of Use for vayuconsultinggroup.com — governing access to and use of the Vayu Consulting Group website.',
+    url: 'https://www.vayuconsultinggroup.com/terms',
+    type: 'website',
+  },
 }
 
 // ── Style constants ──────────────────────────────────────────

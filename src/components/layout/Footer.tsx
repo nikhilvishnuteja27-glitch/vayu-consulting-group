@@ -7,8 +7,9 @@ const NAV_SECTIONS = [
   {
     label: 'Company',
     links: [
-      { label: 'What We Do',  href: '/what-we-do'  },
-      { label: 'How We Work', href: '/how-we-work' },
+      { label: 'What We Do',             href: '/what-we-do'             },
+      { label: 'Execution Intelligence', href: '/execution-intelligence' },
+      { label: 'How We Work',            href: '/how-we-work'            },
       { label: 'Insights',    href: '/insights'    },
       { label: 'About VCG',   href: '/about'       },
       { label: 'Join VCG',    href: '/join'        },
