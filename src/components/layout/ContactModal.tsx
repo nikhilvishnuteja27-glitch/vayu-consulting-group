@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, CheckCircle, Mail, Phone, User, MessageSquare, ArrowRight, ChevronDown } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 interface ContactModalProps {
   isOpen: boolean
@@ -96,6 +97,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [form, setForm] = useState(EMPTY_FORM)
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const panelRef = useRef<HTMLDivElement>(null)
+  const submittingRef = useRef(false)
   const set = (k: keyof typeof form) => (v: string) => setForm(f => ({ ...f, [k]: v }))
 
   const handleClose = useCallback(() => {
@@ -128,6 +130,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (submittingRef.current) return
+    submittingRef.current = true
     setStatus('sending')
     try {
       const res = await fetch('/api/contact', {
@@ -135,8 +139,14 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-      setStatus(res.ok ? 'sent' : 'error')
+      if (res.ok) {
+        trackEvent('contact_form_submit_success', { form_name: 'contact' })
+        setStatus('sent')
+      } else {
+        setStatus('error')
+      }
     } catch { setStatus('error') }
+    finally { submittingRef.current = false }
   }
 
   return (

@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle, ArrowRight } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
@@ -87,10 +88,13 @@ const EMPTY = {
 export function TalentForm() {
   const [form, setForm] = useState(EMPTY)
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const submittingRef = useRef(false)
   const set = (k: keyof typeof form) => (v: string) => setForm(f => ({ ...f, [k]: v }))
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (submittingRef.current) return
+    submittingRef.current = true
     setStatus('sending')
     try {
       const res = await fetch('/api/careers', {
@@ -98,8 +102,14 @@ export function TalentForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-      setStatus(res.ok ? 'sent' : 'error')
+      if (res.ok) {
+        trackEvent('talent_form_submit_success', { form_name: 'talent' })
+        setStatus('sent')
+      } else {
+        setStatus('error')
+      }
     } catch { setStatus('error') }
+    finally { submittingRef.current = false }
   }
 
   return (
