@@ -49,3 +49,26 @@ export const slideRight: Variants = {
     transition: { duration: 0.7, delay: i * 0.1, ease: EASE },
   }),
 }
+
+// ─── Diagram motion primitives ────────────────────────────────────────────────
+// Semantic variants for NODE and PATH elements in VCG execution diagrams.
+// These are deliberately distinct from fadeUp — diagram motion is architectural,
+// not editorial. Individual diagrams own inView triggering and narrative timing.
+
+export const nodeReveal: Variants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { duration: 0.45, ease: EASE },
+  },
+}
+
+export const pathDraw: Variants = {
+  hidden: { pathLength: 0, opacity: 0 },
+  visible: {
+    pathLength: 1,
+    opacity: 1,
+    transition: { duration: 1.2, ease: EASE },
+  },
+}

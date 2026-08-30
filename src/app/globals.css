@@ -25,6 +25,23 @@
   --color-amber-500: #C8A96E;
   --color-amber-400: #D4B483;
 
+  /* ─── Diagram semantic tokens ────────────────── */
+  /* NODE: structural entities — inactive/active states */
+  --diagram-node:         rgba(245,243,238,0.50);
+  --diagram-node-active:  var(--color-amber-500);
+  /* PATH: structural execution relationships */
+  --diagram-path:         rgba(245,243,238,0.12);
+  /* SIGNAL: active execution movement */
+  --diagram-signal:       var(--color-amber-500);
+  /* BOUNDARY: org / system / ownership boundary */
+  --diagram-boundary:     rgba(245,243,238,0.18);
+  /* EXPOSURE: interrupted / ambiguous / weak state */
+  --diagram-exposure:     rgba(245,243,238,0.28);
+  /* RESOLUTION: clarified / restored condition */
+  --diagram-resolution:   var(--color-amber-400);
+  /* OUTCOME: intended execution destination */
+  --diagram-outcome:      var(--color-amber-500);
+
   /* ─── Fonts ─────────────────────────────────── */
   --font-display: var(--font-display-var, serif);
   --font-body:    var(--font-body-var, sans-serif);
