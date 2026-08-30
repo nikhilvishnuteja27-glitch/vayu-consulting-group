@@ -160,9 +160,10 @@ export default function PrivacyPage() {
             </S>
 
             <S n="5" title="Cookies and Tracking Technologies">
-              <P>The VCG website application does not intentionally set cookies. We have not installed Google Analytics, Meta Pixel, LinkedIn Insight Tag, behavioral analytics platforms, or advertising tracking technologies on the Website.</P>
-              <P>Our website hosting infrastructure may process technical information as part of standard website delivery. We do not use non-essential cookies for advertising, behavioral targeting, or cross-site tracking.</P>
-              <P>If we introduce analytics, advertising, or other tracking technologies in the future, this Privacy Policy will be updated before such technologies are deployed.</P>
+              <P>Vayu Consulting Group uses Google Analytics 4 to understand how visitors use this Website and to inform improvements to the Website. Google Analytics may collect information such as pages viewed, approximate geographic location, device and browser type, referral source, and similar usage information. Google Analytics may use cookies or similar technologies as part of its measurement.</P>
+              <P>We do not use Google Analytics for advertising, remarketing, or behavioral profiling.</P>
+              <P>Google&rsquo;s own privacy practices govern how Google processes data collected through Google Analytics. For information on how Google handles this data, please review the Google Privacy Policy at <a href="https://policies.google.com/privacy" style={linkStyle} target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</P>
+              <P>We do not use Meta Pixel, LinkedIn Insight Tag, or other advertising or behavioral tracking technologies on this Website. Our website hosting infrastructure may also process technical information &mdash; such as IP addresses and access timestamps &mdash; as part of standard website delivery and security operations.</P>
             </S>
 
             <S n="6" title="Data Retention">
