@@ -60,9 +60,9 @@ export function ExecutionFailureDiagram({ activeState, compact = false }: Props)
         style={{ display: 'block' }}
       >
         {/* INTENT node — always present as structural anchor */}
-        <circle cx={IX} cy={IY} r={4.5} fill="var(--diagram-node)" opacity={0.82} />
+        <circle cx={IX} cy={IY} r={4.5} fill="var(--diagram-node)" opacity={0.86} />
         {/* STRATEGIC INTENT label — kept in compact since it anchors the whole diagram */}
-        <text x={10} y={IY - 11} fill="var(--diagram-node)" opacity={0.50} style={mono()}>
+        <text x={10} y={IY - 11} fill="var(--diagram-node)" opacity={0.84} style={mono()}>
           STRATEGIC INTENT
         </text>
 
@@ -70,7 +70,7 @@ export function ExecutionFailureDiagram({ activeState, compact = false }: Props)
         <motion.g animate={vis(0)} transition={tr}>
           <line
             x1={IX} y1={IY} x2={OX} y2={OY}
-            stroke="var(--diagram-path)" strokeWidth={1} opacity={0.66}
+            stroke="rgba(245,243,238,0.18)" strokeWidth={1} opacity={1}
           />
           <circle cx={OX} cy={OY} r={5}  fill="var(--diagram-outcome)" opacity={0.88} />
           <circle cx={OX} cy={OY} r={13} stroke="var(--diagram-outcome)" strokeWidth={0.6} opacity={0.32} />
@@ -85,19 +85,19 @@ export function ExecutionFailureDiagram({ activeState, compact = false }: Props)
         <motion.g animate={vis(1)} transition={tr}>
           <line
             x1={IX} y1={IY} x2={FX} y2={FY}
-            stroke="var(--diagram-path)" strokeWidth={1} opacity={0.58}
+            stroke="rgba(245,243,238,0.18)" strokeWidth={1} opacity={1}
           />
           <path
             d={`M ${FX},${FY} C ${FX+44},${FY} ${FX+76},${BT.y} ${BT.x},${BT.y}`}
-            stroke="var(--diagram-path)" strokeWidth={0.9} opacity={0.45}
+            stroke="var(--diagram-path)" strokeWidth={0.9} opacity={0.70}
           />
           <line
             x1={FX} y1={FY} x2={BM.x} y2={BM.y}
-            stroke="var(--diagram-path)" strokeWidth={0.9} opacity={0.45}
+            stroke="var(--diagram-path)" strokeWidth={0.9} opacity={0.70}
           />
           <path
             d={`M ${FX},${FY} C ${FX+44},${FY} ${FX+76},${BB.y} ${BB.x},${BB.y}`}
-            stroke="var(--diagram-path)" strokeWidth={0.9} opacity={0.45}
+            stroke="var(--diagram-path)" strokeWidth={0.9} opacity={0.70}
           />
           <circle cx={FX} cy={FY} r={3.5} fill="var(--diagram-exposure)" opacity={0.80} />
           <circle cx={BT.x} cy={BT.y} r={3} fill="var(--diagram-node)" opacity={0.52} />
@@ -106,7 +106,7 @@ export function ExecutionFailureDiagram({ activeState, compact = false }: Props)
           <circle cx={OX} cy={OY} r={11} stroke="var(--diagram-outcome)" strokeWidth={0.5} opacity={0.18} />
           {/* Decorative label — suppressed in compact; 3 branches speak for themselves */}
           {!compact && (
-            <text x={FX - 2} y={FY - 12} fill="var(--diagram-node)" opacity={0.28} style={mono({ fontSize: 6 })}>
+            <text x={FX - 2} y={FY - 12} fill="var(--diagram-node)" opacity={0.78} style={mono({ fontSize: 6 })}>
               OWNERSHIP
             </text>
           )}
@@ -119,7 +119,7 @@ export function ExecutionFailureDiagram({ activeState, compact = false }: Props)
         <motion.g animate={vis(2)} transition={tr}>
           <line
             x1={IX} y1={OBS_Y} x2={OX} y2={OBS_Y}
-            stroke="var(--diagram-path)" strokeWidth={1} opacity={0.66}
+            stroke="rgba(245,243,238,0.18)" strokeWidth={1} opacity={1}
           />
           <line
             x1={IX} y1={OBS_Y} x2={IX} y2={IY}
@@ -145,7 +145,7 @@ export function ExecutionFailureDiagram({ activeState, compact = false }: Props)
         <motion.g animate={vis(3)} transition={tr}>
           <line
             x1={IX} y1={OBS_Y} x2={148} y2={OBS_Y}
-            stroke="var(--diagram-path)" strokeWidth={1} opacity={0.62}
+            stroke="rgba(245,243,238,0.18)" strokeWidth={1} opacity={1}
           />
           <line
             x1={IX} y1={OBS_Y} x2={IX} y2={IY}
