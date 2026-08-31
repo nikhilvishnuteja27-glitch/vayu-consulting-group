@@ -125,6 +125,15 @@ const ASSESSMENT_QUESTIONS = [
   { dim: 'Outcome Discipline',   q: 'What has changed in the intended outcomes since the initiative began, and who authorized those changes?' },
 ]
 
+// Grouped by dimension for the diagnostic instrument layout
+const ASSESSMENT_GROUPS = [
+  { dim: 'I — Accountability',          questions: ASSESSMENT_QUESTIONS.slice(0, 2) },
+  { dim: 'II — Decision Architecture',  questions: ASSESSMENT_QUESTIONS.slice(2, 4) },
+  { dim: 'III — Executive Visibility',  questions: ASSESSMENT_QUESTIONS.slice(4, 6) },
+  { dim: 'IV — Dependency Ownership',   questions: ASSESSMENT_QUESTIONS.slice(6, 8) },
+  { dim: 'V — Outcome Discipline',      questions: ASSESSMENT_QUESTIONS.slice(8, 10) },
+]
+
 /* ── Sub-components ──────────────────────────────────────────── */
 
 function FailurePatternRow({ fp, index }: { fp: (typeof FAILURE_PATTERNS)[0]; index: number }) {
@@ -135,59 +144,75 @@ function FailurePatternRow({ fp, index }: { fp: (typeof FAILURE_PATTERNS)[0]; in
       ref={ref}
       initial={{ opacity: 0 }}
       animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.50, delay: 0.08 * index, ease: EASE }}
+      transition={{ duration: 0.50, delay: 0.07 * index, ease: EASE }}
       style={{
         borderTop: '1px solid rgba(17,18,20,0.08)',
-        paddingTop: '1.5rem',
-        paddingBottom: '1.5rem',
+        paddingTop: '1.75rem',
+        paddingBottom: '1.75rem',
         display: 'grid',
-        gridTemplateColumns: 'auto 1fr',
-        gap: '1.5rem',
+        gridTemplateColumns: '4.5rem 1fr',
+        gap: '1.75rem',
         alignItems: 'start',
       }}
     >
-      <div style={{ paddingTop: '0.15rem', width: '2.5rem', flexShrink: 0 }}>
-        <span className="font-mono" style={{ fontSize: '0.5rem', letterSpacing: '0.14em', color: '#C8A96E', opacity: 0.65 }}>{fp.n}</span>
+      {/* Left: number + dim mapping */}
+      <div style={{ paddingTop: '0.2rem' }}>
+        <span className="font-mono block" style={{ fontSize: '0.4375rem', letterSpacing: '0.14em', color: '#C8A96E', opacity: 0.70 }}>{fp.n}</span>
+        <span className="font-mono block mt-2" style={{ fontSize: '0.375rem', letterSpacing: '0.10em', lineHeight: 1.5, color: 'rgba(17,18,20,0.32)' }}>{fp.dim}</span>
       </div>
+      {/* Right: name + body */}
       <div>
-        <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-2">
-          <p className="font-body font-medium" style={{ fontSize: '0.9375rem', color: '#111214', letterSpacing: '-0.005em' }}>{fp.name}</p>
-          <span className="font-mono" style={{ fontSize: '0.4375rem', letterSpacing: '0.14em', textTransform: 'uppercase' as const, color: '#C8A96E', opacity: 0.65 }}>{fp.dim}</span>
-        </div>
-        <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.80, color: 'rgba(17,18,20,0.52)', maxWidth: '66ch' }}>{fp.body}</p>
+        <p className="font-body font-medium mb-2" style={{ fontSize: '1.0625rem', lineHeight: 1.22, letterSpacing: '-0.008em', color: '#111214' }}>{fp.name}</p>
+        <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.84, color: 'rgba(17,18,20,0.52)', maxWidth: '64ch' }}>{fp.body}</p>
       </div>
     </motion.div>
   )
 }
 
-function AssessmentRow({ q, index }: { q: (typeof ASSESSMENT_QUESTIONS)[0]; index: number }) {
+function AssessmentBlock({ group, groupIndex }: { group: (typeof ASSESSMENT_GROUPS)[0]; groupIndex: number }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, amount: 0.2 })
+  const inView = useInView(ref, { once: true, amount: 0.15 })
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 0.42, delay: Math.min(index * 0.04, 0.28), ease: EASE }}
-      style={{
-        borderTop: '1px solid rgba(17,18,20,0.07)',
-        display: 'grid',
-        gridTemplateColumns: 'auto 1fr',
-        gap: '1.25rem',
-        padding: '1.125rem 0',
-        alignItems: 'baseline',
-      }}
+      initial={{ opacity: 0, y: 8 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.48, delay: groupIndex * 0.06, ease: EASE }}
     >
-      <span className="font-mono" style={{ fontSize: '0.5rem', letterSpacing: '0.12em', color: 'rgba(17,18,20,0.22)', flexShrink: 0, minWidth: '2rem' }}>
-        {String(index + 1).padStart(2, '0')}
-      </span>
-      <div>
-        <p className="font-mono mb-1" style={{ fontSize: '0.4375rem', letterSpacing: '0.16em', textTransform: 'uppercase' as const, color: '#C8A96E', opacity: 0.65 }}>
-          {q.dim}
-        </p>
-        <p className="font-body font-light" style={{ fontSize: '0.9375rem', lineHeight: 1.72, color: 'rgba(17,18,20,0.65)' }}>
-          {q.q}
-        </p>
+      {/* Dimension header */}
+      <div style={{
+        borderTop: '1px solid rgba(17,18,20,0.10)',
+        paddingTop: '1.25rem',
+        paddingBottom: '1rem',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '1rem',
+      }}>
+        <span className="font-mono" style={{ fontSize: '0.4375rem', letterSpacing: '0.18em', color: '#C8A96E', whiteSpace: 'nowrap', flexShrink: 0 }}>
+          {group.dim}
+        </span>
+        <div style={{ flex: 1, height: '1px', background: 'rgba(17,18,20,0.07)' }} />
+      </div>
+      {/* Questions */}
+      <div style={{ paddingBottom: '1.625rem' }}>
+        {group.questions.map((q, qi) => (
+          <div
+            key={qi}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '2.25rem 1fr',
+              gap: '1rem',
+              marginBottom: qi === 0 ? '0.875rem' : 0,
+            }}
+          >
+            <span className="font-mono" style={{ fontSize: '0.4375rem', letterSpacing: '0.12em', color: 'rgba(17,18,20,0.22)', paddingTop: '0.3em', flexShrink: 0 }}>
+              {String(groupIndex * 2 + qi + 1).padStart(2, '0')}
+            </span>
+            <p className="font-body font-light" style={{ fontSize: '0.9375rem', lineHeight: 1.76, color: 'rgba(17,18,20,0.68)' }}>
+              {q.q}
+            </p>
+          </div>
+        ))}
       </div>
     </motion.div>
   )
@@ -441,6 +466,7 @@ export default function ExecutionIntelligencePage() {
       </section>
 
       {/* ── 2. Framework Visual ───────────────────────────── */}
+      {/* Warm-white ground: gives the diagram breathing room and breaks the dark hero plateau */}
       <section style={{ background: '#F5F3EE' }}>
         <div className="container-site" style={{ paddingTop: 'clamp(4.5rem,7vw,6.5rem)', paddingBottom: 'clamp(4.5rem,7vw,6.5rem)' }}>
           <SectionReveal>
@@ -477,7 +503,8 @@ export default function ExecutionIntelligencePage() {
       </section>
 
       {/* ── 3a. Dimensions I & II ─────────────────────────── */}
-      <section style={{ background: '#F5F3EE' }}>
+      {/* Clean white: reading-heavy dimension detail benefits from a cooler, more neutral ground */}
+      <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,18,20,0.07)' }}>
         <div className="container-site">
           <DimensionCard dim={DIMENSIONS[0]} index={0} />
           <DimensionCard dim={DIMENSIONS[1]} index={1} />
@@ -507,7 +534,7 @@ export default function ExecutionIntelligencePage() {
           <SectionReveal>
             <p className="vcg-label-dark mb-5">Failure Patterns</p>
             <h2
-              className="font-display font-normal mb-12"
+              className="font-display font-normal mb-10"
               style={{ fontSize: 'clamp(1.7rem, 2.6vw, 2.7rem)', lineHeight: 1.10, letterSpacing: '-0.026em', color: '#111214', maxWidth: '32ch' }}
             >
               Five patterns account for most enterprise execution failures.
@@ -523,7 +550,9 @@ export default function ExecutionIntelligencePage() {
       </section>
 
       {/* ── 5. Executive Self-Assessment ─────────────────── */}
-      <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,18,20,0.07)' }}>
+      {/* Warm ground: creates separation from the analytical white Failure section, */}
+      {/* and provides a transitional buffer before the dark AI chapter.            */}
+      <section style={{ background: '#F5F3EE', borderTop: '1px solid rgba(17,18,20,0.07)' }}>
         <div className="container-site" style={{ paddingTop: 'clamp(4.5rem,7vw,6.5rem)', paddingBottom: 'clamp(4.5rem,7vw,6.5rem)' }}>
           <SectionReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 mb-10">
@@ -545,10 +574,10 @@ export default function ExecutionIntelligencePage() {
           </SectionReveal>
 
           <div>
-            {ASSESSMENT_QUESTIONS.map((q, i) => (
-              <AssessmentRow key={i} q={q} index={i} />
+            {ASSESSMENT_GROUPS.map((group, i) => (
+              <AssessmentBlock key={group.dim} group={group} groupIndex={i} />
             ))}
-            <div style={{ borderTop: '1px solid rgba(17,18,20,0.07)' }} />
+            <div style={{ borderTop: '1px solid rgba(17,18,20,0.10)' }} />
           </div>
         </div>
       </section>
@@ -582,7 +611,7 @@ export default function ExecutionIntelligencePage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 mb-4">
                     <div style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(245,243,238,0.22)', flexShrink: 0, marginTop: '0.55em' }} />
-                    <p className="font-body font-light" style={{ fontSize: '0.9rem', lineHeight: 1.72, color: 'rgba(245,243,238,0.45)' }}>{item}</p>
+                    <p className="font-body font-light" style={{ fontSize: '0.9rem', lineHeight: 1.72, color: 'rgba(245,243,238,0.50)' }}>{item}</p>
                   </div>
                 ))}
               </div>
