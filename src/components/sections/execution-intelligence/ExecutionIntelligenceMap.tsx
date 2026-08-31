@@ -87,7 +87,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
                 stroke={hl(2) ? 'var(--diagram-signal)' : 'var(--diagram-boundary)'}
                 strokeWidth={0.9} opacity={0.72}
               />
-              <text x={62} y={OBS_Y - 10} fill={textColor(2)} opacity={0.60} style={MONO}>
+              <text x={62} y={OBS_Y - 10} fill={textColor(2)} opacity={0.88} style={MONO}>
                 III — EXECUTIVE VISIBILITY
               </text>
               <text x={420} y={OBS_Y - 10} textAnchor="end" fill={textColor(2)} opacity={0.30} style={MONO_SM}>
@@ -114,14 +114,14 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             transition={esTr(0.22)}
           >
             <g style={{ opacity: gOp(0), transition: hTr }}>
-              <circle cx={ACC.x} cy={ACC.y} r={5.5} fill={nodeColor(0)} opacity={0.82} />
-              <text x={10} y={ACC.y + 20} fill={textColor(0)} opacity={0.54} style={MONO}>
+              <circle cx={ACC.x} cy={ACC.y} r={5.5} fill={nodeColor(0)} opacity={0.90} />
+              <text x={10} y={ACC.y + 20} fill={textColor(0)} opacity={0.88} style={MONO}>
                 I — ACCOUNTABILITY
               </text>
               {/* Path to Execution State */}
               <line
                 x1={ACC.x + 4} y1={ACC.y + 5} x2={EXEC.x - 4} y2={EXEC.y - 8}
-                stroke={pathColor(0)} strokeWidth={0.9} opacity={hl(0) ? 0.72 : 0.50}
+                stroke={hl(0) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(0) ? 0.72 : 1}
               />
             </g>
           </motion.g>
@@ -144,14 +144,14 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
               />
               <circle cx={DA_IN1.x} cy={DA_IN1.y} r={2.5} fill="var(--diagram-node)" opacity={0.34} />
               <circle cx={DA_IN2.x} cy={DA_IN2.y} r={2.5} fill="var(--diagram-node)" opacity={0.34} />
-              <circle cx={DA.x} cy={DA.y} r={5.5} fill={nodeColor(1)} opacity={0.82} />
-              <text x={470} y={DA.y + 20} textAnchor="end" fill={textColor(1)} opacity={0.54} style={MONO}>
+              <circle cx={DA.x} cy={DA.y} r={5.5} fill={nodeColor(1)} opacity={0.90} />
+              <text x={470} y={DA.y + 20} textAnchor="end" fill={textColor(1)} opacity={0.88} style={MONO}>
                 II — DECISION ARCHITECTURE
               </text>
               {/* Path to Execution State */}
               <line
                 x1={DA.x - 4} y1={DA.y + 5} x2={EXEC.x + 4} y2={EXEC.y - 8}
-                stroke={pathColor(1)} strokeWidth={0.9} opacity={hl(1) ? 0.72 : 0.50}
+                stroke={hl(1) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(1) ? 0.72 : 1}
               />
             </g>
           </motion.g>
@@ -163,7 +163,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             transition={esTr(0.50)}
           >
             <g style={{ opacity: execOp, transition: hTr }}>
-              <circle cx={EXEC.x} cy={EXEC.y} r={7}  fill="var(--diagram-node)" opacity={0.78} />
+              <circle cx={EXEC.x} cy={EXEC.y} r={7}  fill="var(--diagram-node)" opacity={0.88} />
               <circle cx={EXEC.x} cy={EXEC.y} r={15} stroke="var(--diagram-node)" strokeWidth={0.5} opacity={0.20} />
               <text x={EXEC.x} y={EXEC.y + 27} textAnchor="middle" fill="var(--diagram-node)" opacity={0.24} style={MONO_SM}>
                 EXECUTION STATE
@@ -180,7 +180,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             <g style={{ opacity: gOp(3), transition: hTr }}>
               <line
                 x1={EXEC.x} y1={EXEC.y + 10} x2={DEP_C.x} y2={DEP_C.y - 7}
-                stroke={pathColor(3)} strokeWidth={0.9} opacity={hl(3) ? 0.68 : 0.48}
+                stroke={hl(3) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(3) ? 0.68 : 1}
               />
             </g>
           </motion.g>
@@ -198,11 +198,11 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
               {/* Bridge — the owned interface between workstreams */}
               <line
                 x1={DEP_L.x} y1={DEP_L.y} x2={DEP_R.x} y2={DEP_R.y}
-                stroke={pathColor(3)} strokeWidth={0.9} opacity={hl(3) ? 0.76 : 0.56}
+                stroke={hl(3) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(3) ? 0.76 : 1}
               />
               {/* Center ownership point */}
-              <circle cx={DEP_C.x} cy={DEP_C.y} r={4.5} fill={nodeColor(3)} opacity={0.84} />
-              <text x={DEP_C.x} y={DEP_C.y - 12} textAnchor="middle" fill={textColor(3)} opacity={0.52} style={MONO}>
+              <circle cx={DEP_C.x} cy={DEP_C.y} r={4.5} fill={nodeColor(3)} opacity={0.92} />
+              <text x={DEP_C.x} y={DEP_C.y - 12} textAnchor="middle" fill={textColor(3)} opacity={0.88} style={MONO}>
                 IV — DEPENDENCY OWNERSHIP
               </text>
             </g>
@@ -217,7 +217,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             <g style={{ opacity: gOp(4), transition: hTr }}>
               <line
                 x1={DEP_C.x} y1={DEP_C.y + 7} x2={OUTD.x} y2={OUTD.y - 8}
-                stroke={pathColor(4)} strokeWidth={0.9} opacity={hl(4) ? 0.68 : 0.48}
+                stroke={hl(4) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(4) ? 0.68 : 1}
               />
             </g>
           </motion.g>
@@ -229,14 +229,14 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             transition={esTr(0.86)}
           >
             <g style={{ opacity: gOp(4), transition: hTr }}>
-              <circle cx={OUTD.x} cy={OUTD.y} r={5.5} fill={nodeColor(4)} opacity={0.86} />
-              <text x={OUTD.x + 14} y={OUTD.y + 4} fill={textColor(4)} opacity={0.52} style={MONO}>
+              <circle cx={OUTD.x} cy={OUTD.y} r={5.5} fill={nodeColor(4)} opacity={0.92} />
+              <text x={OUTD.x + 14} y={OUTD.y + 4} fill={textColor(4)} opacity={0.88} style={MONO}>
                 V — OUTCOME DISCIPLINE
               </text>
               {/* Path to Outcome */}
               <line
                 x1={OUTD.x} y1={OUTD.y + 8} x2={OUT.x} y2={OUT.y - 9}
-                stroke={pathColor(4)} strokeWidth={0.9} opacity={hl(4) ? 0.72 : 0.54}
+                stroke={hl(4) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(4) ? 0.72 : 1}
               />
             </g>
           </motion.g>
