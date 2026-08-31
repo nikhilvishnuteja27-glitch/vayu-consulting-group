@@ -80,7 +80,6 @@ export default function PerspectivesPage() {
                     cursor: 'pointer',
                     transition: 'opacity 0.18s',
                   }}
-                  className="perspective-entry"
                 >
                   <div
                     style={{

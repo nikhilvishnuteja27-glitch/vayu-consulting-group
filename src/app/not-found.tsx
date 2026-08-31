@@ -50,7 +50,6 @@ export default function NotFound() {
               href="/what-we-do"
               className="font-body font-light transition-colors duration-200"
               style={{ fontSize: '0.875rem', color: 'rgba(245,243,238,0.34)', paddingTop: '0.625rem', textDecoration: 'underline', textDecorationColor: 'rgba(245,243,238,0.16)' }}
-              onMouseEnter={undefined}
             >
               What We Do
             </Link>

@@ -161,8 +161,6 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-6"
           style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(12px)' }}
           onClick={e => { if (e.target === e.currentTarget) handleClose() }}
-          aria-modal="true"
-          aria-label="Client inquiry modal"
         >
           <motion.div
             ref={panelRef}

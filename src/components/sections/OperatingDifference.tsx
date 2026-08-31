@@ -21,7 +21,7 @@ export function OperatingDifference() {
     <section
       ref={ref}
       id="operating-difference"
-      style={{ background: '#111214', borderTop: '1px solid rgba(255,255,255,0.05)' }}
+      style={{ background: '#111214', borderTop: '1px solid rgba(255,255,255,0.05)', position: 'relative' }}
     >
       {/* Specular hairline */}
       <div

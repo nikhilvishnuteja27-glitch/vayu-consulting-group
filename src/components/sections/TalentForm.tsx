@@ -30,10 +30,10 @@ const labelStyle: React.CSSProperties = {
   marginBottom: '0.5rem',
 }
 
-function F({ label, children }: { label: string; children: React.ReactNode }) {
+function F({ label, htmlFor, children }: { label: string; htmlFor?: string; children: React.ReactNode }) {
   return (
     <div>
-      <span style={labelStyle}>{label}</span>
+      <label htmlFor={htmlFor} style={labelStyle}>{label}</label>
       {children}
     </div>
   )
@@ -155,29 +155,30 @@ export function TalentForm() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <F label="Full Name *">
-              <Input value={form.name} onChange={set('name')} placeholder="Jane Smith" required autoComplete="name" />
+            <F label="Full Name *" htmlFor="tf-name">
+              <Input id="tf-name" value={form.name} onChange={set('name')} placeholder="Jane Smith" required autoComplete="name" />
             </F>
-            <F label="Email Address *">
-              <Input type="email" value={form.email} onChange={set('email')} placeholder="jane@email.com" required autoComplete="email" />
+            <F label="Email Address *" htmlFor="tf-email">
+              <Input id="tf-email" type="email" value={form.email} onChange={set('email')} placeholder="jane@email.com" required autoComplete="email" />
             </F>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <F label="Phone Number">
-              <Input type="tel" value={form.phone} onChange={set('phone')} placeholder="+1 (555) 000-0000" autoComplete="tel" />
+            <F label="Phone Number" htmlFor="tf-phone">
+              <Input id="tf-phone" type="tel" value={form.phone} onChange={set('phone')} placeholder="+1 (555) 000-0000" autoComplete="tel" />
             </F>
-            <F label="Location">
-              <Input value={form.location} onChange={set('location')} placeholder="City, Province / State" autoComplete="address-level2" />
+            <F label="Location" htmlFor="tf-location">
+              <Input id="tf-location" value={form.location} onChange={set('location')} placeholder="City, Province / State" autoComplete="address-level2" />
             </F>
           </div>
 
-          <F label="Primary Role / Title *">
-            <Input value={form.primaryRole} onChange={set('primaryRole')} placeholder="e.g. Transformation Executive, Program Director, PMO Lead" required />
+          <F label="Primary Role / Title *" htmlFor="tf-role">
+            <Input id="tf-role" value={form.primaryRole} onChange={set('primaryRole')} placeholder="e.g. Transformation Executive, Program Director, PMO Lead" required />
           </F>
 
-          <F label="Core Skills &amp; Experience *">
+          <F label="Core Skills &amp; Experience *" htmlFor="tf-skills">
             <textarea
+              id="tf-skills"
               value={form.coreSkills}
               required
               onChange={e => set('coreSkills')(e.target.value)}
@@ -190,8 +191,8 @@ export function TalentForm() {
           </F>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <F label="Years of Senior Experience *">
-              <Select value={form.yearsExperience} onChange={set('yearsExperience')} required>
+            <F label="Years of Senior Experience *" htmlFor="tf-years">
+              <Select id="tf-years" value={form.yearsExperience} onChange={set('yearsExperience')} required>
                 <option value="" disabled>Select</option>
                 <option value="5–10 years">5–10 years</option>
                 <option value="10–15 years">10–15 years</option>
@@ -199,22 +200,22 @@ export function TalentForm() {
                 <option value="20+ years">20+ years</option>
               </Select>
             </F>
-            <F label="LinkedIn Profile URL">
-              <Input type="url" value={form.linkedIn} onChange={set('linkedIn')} placeholder="https://linkedin.com/in/yourprofile" autoComplete="url" />
+            <F label="LinkedIn Profile URL" htmlFor="tf-linkedin">
+              <Input id="tf-linkedin" type="url" value={form.linkedIn} onChange={set('linkedIn')} placeholder="https://linkedin.com/in/yourprofile" autoComplete="url" />
             </F>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <F label="Engagement Preference *">
-              <Select value={form.engagementPreference} onChange={set('engagementPreference')} required>
+            <F label="Engagement Preference *" htmlFor="tf-engagement">
+              <Select id="tf-engagement" value={form.engagementPreference} onChange={set('engagementPreference')} required>
                 <option value="" disabled>Select</option>
                 <option value="Full-time embedded">Full-time embedded</option>
                 <option value="Part-time / fractional">Part-time / fractional</option>
                 <option value="Either">Either</option>
               </Select>
             </F>
-            <F label="Availability *">
-              <Select value={form.availability} onChange={set('availability')} required>
+            <F label="Availability *" htmlFor="tf-availability">
+              <Select id="tf-availability" value={form.availability} onChange={set('availability')} required>
                 <option value="" disabled>Select</option>
                 <option value="Available now">Available now</option>
                 <option value="Within 30 days">Within 30 days</option>
