@@ -4,7 +4,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { EIFrameworkDiagram } from '@/components/ei/EIFrameworkDiagram'
+import { ExecutionIntelligenceMap } from '@/components/sections/execution-intelligence/ExecutionIntelligenceMap'
 import { useContactModal } from '@/context/ContactModalContext'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -441,7 +441,7 @@ export default function ExecutionIntelligencePage() {
       </section>
 
       {/* ── 2. Framework Visual ───────────────────────────── */}
-      <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,18,20,0.07)' }}>
+      <section style={{ background: '#F5F3EE' }}>
         <div className="container-site" style={{ paddingTop: 'clamp(4.5rem,7vw,6.5rem)', paddingBottom: 'clamp(4.5rem,7vw,6.5rem)' }}>
           <SectionReveal>
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 mb-10">
@@ -455,14 +455,23 @@ export default function ExecutionIntelligencePage() {
                 </h2>
               </div>
               <div className="flex items-end">
-                <p className="font-body font-light" style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(17,18,20,0.50)', maxWidth: '46ch' }}>
+                <p className="font-body font-light" style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(17,18,20,0.45)', maxWidth: '46ch' }}>
                   Execution Intelligence is not a methodology. It is a diagnostic framework — a set of structural conditions whose presence or absence reliably predicts execution outcomes. The five dimensions operate simultaneously. Weakness in any one creates exposure in all others.
                 </p>
               </div>
             </div>
           </SectionReveal>
           <SectionReveal delay={0.10}>
-            <EIFrameworkDiagram size="full" dark={false} />
+            <p className="sr-only">
+              A structural diagram of the five-dimension Execution Intelligence framework. Executive Visibility (Dimension III) forms a horizontal observation layer spanning the entire system. Accountability (I) and Decision Architecture (II) are the two primary input nodes, each with a path converging on a central Execution State hub. Dependency Ownership (IV) manages left, center, and right workstream nodes connected by a bridge. Outcome Discipline (V) sits between the dependency layer and the final Outcome destination node.
+            </p>
+            <ExecutionIntelligenceMap hoveredDim={null} theme="light" />
+            <p
+              className="font-body font-light"
+              style={{ fontSize: '0.6875rem', lineHeight: 1.65, color: 'rgba(17,18,20,0.25)', marginTop: '1.25rem' }}
+            >
+              The five dimensions operate simultaneously, not sequentially. Executive Visibility (III) is the observation layer — it does not add structure, it reveals whether structure exists.
+            </p>
           </SectionReveal>
         </div>
       </section>

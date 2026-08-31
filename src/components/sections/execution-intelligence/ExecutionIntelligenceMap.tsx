@@ -29,15 +29,36 @@ const MONO_SM: React.CSSProperties = {
   letterSpacing: '0.14em',
 }
 
+// ── Theme color palettes ───────────────────────────────────────────────────────
+const DARK_C = {
+  node:     'var(--diagram-node)',      // rgba(245,243,238,0.50)
+  path:     'var(--diagram-path)',      // rgba(245,243,238,0.12)
+  boundary: 'var(--diagram-boundary)', // rgba(245,243,238,0.18)
+  primary:  'rgba(245,243,238,0.22)',
+} as const
+
+const LIGHT_C = {
+  node:     'rgba(17,18,20,0.50)',
+  path:     'rgba(17,18,20,0.12)',
+  boundary: 'rgba(17,18,20,0.18)',
+  primary:  'rgba(17,18,20,0.22)',
+} as const
+
 // hoveredDim: 0=Accountability, 1=DecisionArch, 2=ExecViz, 3=DepOwn, 4=OutcomeDisc
 interface Props {
   hoveredDim: number | null
+  theme?: 'dark' | 'light'
 }
 
-export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
+export function ExecutionIntelligenceMap({ hoveredDim, theme = 'dark' }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, amount: 0.20 })
   const prefersReduced = useReducedMotion()
+
+  const C = theme === 'light' ? LIGHT_C : DARK_C
+  const mob = theme === 'light'
+    ? { spine: 'rgba(17,18,20,0.08)', dot: 'rgba(17,18,20,0.26)', num: 'rgba(17,18,20,0.24)', label: 'rgba(17,18,20,0.46)' }
+    : { spine: 'rgba(245,243,238,0.08)', dot: 'rgba(245,243,238,0.26)', num: 'rgba(245,243,238,0.24)', label: 'rgba(245,243,238,0.46)' }
 
   // Establishment transition for each group (staggered entry)
   const esTr = (delay: number) =>
@@ -55,11 +76,11 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
   const hTr = prefersReduced ? undefined : 'opacity 0.18s ease'
 
   const nodeColor = (idx: number) =>
-    hoveredDim === idx ? 'var(--diagram-node-active)' : 'var(--diagram-node)'
+    hoveredDim === idx ? 'var(--diagram-node-active)' : C.node
   const pathColor = (idx: number) =>
-    hoveredDim === idx ? 'var(--diagram-signal)' : 'var(--diagram-path)'
+    hoveredDim === idx ? 'var(--diagram-signal)' : C.path
   const textColor = (idx: number) =>
-    hoveredDim === idx ? 'var(--diagram-signal)' : 'var(--diagram-node)'
+    hoveredDim === idx ? 'var(--diagram-signal)' : C.node
   const hl = (idx: number) => hoveredDim === idx
 
   return (
@@ -84,7 +105,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
               {/* Observation line — spans the full system width */}
               <line
                 x1={60} y1={OBS_Y} x2={420} y2={OBS_Y}
-                stroke={hl(2) ? 'var(--diagram-signal)' : 'var(--diagram-boundary)'}
+                stroke={hl(2) ? 'var(--diagram-signal)' : C.boundary}
                 strokeWidth={0.9} opacity={0.72}
               />
               <text x={62} y={OBS_Y - 10} fill={textColor(2)} opacity={0.88} style={MONO}>
@@ -96,12 +117,12 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
               {/* Vertical connectors to ACC and DA — observation relationship */}
               <line
                 x1={ACC.x} y1={OBS_Y + 1} x2={ACC.x} y2={ACC.y - 12}
-                stroke={hl(2) ? 'var(--diagram-signal)' : 'var(--diagram-boundary)'}
+                stroke={hl(2) ? 'var(--diagram-signal)' : C.boundary}
                 strokeWidth={0.65} opacity={0.54}
               />
               <line
                 x1={DA.x} y1={OBS_Y + 1} x2={DA.x} y2={DA.y - 12}
-                stroke={hl(2) ? 'var(--diagram-signal)' : 'var(--diagram-boundary)'}
+                stroke={hl(2) ? 'var(--diagram-signal)' : C.boundary}
                 strokeWidth={0.65} opacity={0.54}
               />
             </g>
@@ -121,7 +142,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
               {/* Path to Execution State */}
               <line
                 x1={ACC.x + 4} y1={ACC.y + 5} x2={EXEC.x - 4} y2={EXEC.y - 8}
-                stroke={hl(0) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(0) ? 0.72 : 1}
+                stroke={hl(0) ? 'var(--diagram-signal)' : C.primary} strokeWidth={0.9} opacity={hl(0) ? 0.72 : 1}
               />
             </g>
           </motion.g>
@@ -142,8 +163,8 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
                 x1={DA_IN2.x} y1={DA_IN2.y} x2={DA.x} y2={DA.y - 10}
                 stroke={pathColor(1)} strokeWidth={0.6} opacity={0.32}
               />
-              <circle cx={DA_IN1.x} cy={DA_IN1.y} r={2.5} fill="var(--diagram-node)" opacity={0.34} />
-              <circle cx={DA_IN2.x} cy={DA_IN2.y} r={2.5} fill="var(--diagram-node)" opacity={0.34} />
+              <circle cx={DA_IN1.x} cy={DA_IN1.y} r={2.5} fill={C.node} opacity={0.34} />
+              <circle cx={DA_IN2.x} cy={DA_IN2.y} r={2.5} fill={C.node} opacity={0.34} />
               <circle cx={DA.x} cy={DA.y} r={5.5} fill={nodeColor(1)} opacity={0.90} />
               <text x={470} y={DA.y + 20} textAnchor="end" fill={textColor(1)} opacity={0.88} style={MONO}>
                 II — DECISION ARCHITECTURE
@@ -151,7 +172,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
               {/* Path to Execution State */}
               <line
                 x1={DA.x - 4} y1={DA.y + 5} x2={EXEC.x + 4} y2={EXEC.y - 8}
-                stroke={hl(1) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(1) ? 0.72 : 1}
+                stroke={hl(1) ? 'var(--diagram-signal)' : C.primary} strokeWidth={0.9} opacity={hl(1) ? 0.72 : 1}
               />
             </g>
           </motion.g>
@@ -163,9 +184,9 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             transition={esTr(0.50)}
           >
             <g style={{ opacity: execOp, transition: hTr }}>
-              <circle cx={EXEC.x} cy={EXEC.y} r={7}  fill="var(--diagram-node)" opacity={0.88} />
-              <circle cx={EXEC.x} cy={EXEC.y} r={15} stroke="var(--diagram-node)" strokeWidth={0.5} opacity={0.20} />
-              <text x={EXEC.x} y={EXEC.y + 27} textAnchor="middle" fill="var(--diagram-node)" opacity={0.24} style={MONO_SM}>
+              <circle cx={EXEC.x} cy={EXEC.y} r={7}  fill={C.node} opacity={0.88} />
+              <circle cx={EXEC.x} cy={EXEC.y} r={15} stroke={C.node} strokeWidth={0.5} opacity={0.20} />
+              <text x={EXEC.x} y={EXEC.y + 27} textAnchor="middle" fill={C.node} opacity={0.24} style={MONO_SM}>
                 EXECUTION STATE
               </text>
             </g>
@@ -180,7 +201,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             <g style={{ opacity: gOp(3), transition: hTr }}>
               <line
                 x1={EXEC.x} y1={EXEC.y + 10} x2={DEP_C.x} y2={DEP_C.y - 7}
-                stroke={hl(3) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(3) ? 0.68 : 1}
+                stroke={hl(3) ? 'var(--diagram-signal)' : C.primary} strokeWidth={0.9} opacity={hl(3) ? 0.68 : 1}
               />
             </g>
           </motion.g>
@@ -193,12 +214,12 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
           >
             <g style={{ opacity: gOp(3), transition: hTr }}>
               {/* Workstream nodes — cross-functional endpoints */}
-              <circle cx={DEP_L.x} cy={DEP_L.y} r={3.5} fill="var(--diagram-node)" opacity={0.46} />
-              <circle cx={DEP_R.x} cy={DEP_R.y} r={3.5} fill="var(--diagram-node)" opacity={0.46} />
+              <circle cx={DEP_L.x} cy={DEP_L.y} r={3.5} fill={C.node} opacity={0.46} />
+              <circle cx={DEP_R.x} cy={DEP_R.y} r={3.5} fill={C.node} opacity={0.46} />
               {/* Bridge — the owned interface between workstreams */}
               <line
                 x1={DEP_L.x} y1={DEP_L.y} x2={DEP_R.x} y2={DEP_R.y}
-                stroke={hl(3) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(3) ? 0.76 : 1}
+                stroke={hl(3) ? 'var(--diagram-signal)' : C.primary} strokeWidth={0.9} opacity={hl(3) ? 0.76 : 1}
               />
               {/* Center ownership point */}
               <circle cx={DEP_C.x} cy={DEP_C.y} r={4.5} fill={nodeColor(3)} opacity={0.92} />
@@ -217,7 +238,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             <g style={{ opacity: gOp(4), transition: hTr }}>
               <line
                 x1={DEP_C.x} y1={DEP_C.y + 7} x2={OUTD.x} y2={OUTD.y - 8}
-                stroke={hl(4) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(4) ? 0.68 : 1}
+                stroke={hl(4) ? 'var(--diagram-signal)' : C.primary} strokeWidth={0.9} opacity={hl(4) ? 0.68 : 1}
               />
             </g>
           </motion.g>
@@ -236,7 +257,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
               {/* Path to Outcome */}
               <line
                 x1={OUTD.x} y1={OUTD.y + 8} x2={OUT.x} y2={OUT.y - 9}
-                stroke={hl(4) ? 'var(--diagram-signal)' : 'rgba(245,243,238,0.22)'} strokeWidth={0.9} opacity={hl(4) ? 0.72 : 1}
+                stroke={hl(4) ? 'var(--diagram-signal)' : C.primary} strokeWidth={0.9} opacity={hl(4) ? 0.72 : 1}
               />
             </g>
           </motion.g>
@@ -294,7 +315,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
               top: '1.125rem',
               bottom: '1.125rem',
               width: '1px',
-              background: 'rgba(245,243,238,0.08)',
+              background: mob.spine,
             }} />
 
             {/* Dimension nodes */}
@@ -314,10 +335,10 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
                   width: '6px',
                   height: '6px',
                   borderRadius: '50%',
-                  background: 'rgba(245,243,238,0.26)',
+                  background: mob.dot,
                 }} />
-                <span style={{ fontFamily: 'var(--font-mono-var, monospace)', fontSize: '0.4375rem', color: 'rgba(245,243,238,0.24)', letterSpacing: '0.10em' }}>{d.n}</span>
-                <span style={{ fontFamily: 'var(--font-body-var, sans-serif)', fontSize: '0.6875rem', fontWeight: 500, color: 'rgba(245,243,238,0.46)', letterSpacing: '-0.005em' }}>{d.label}</span>
+                <span style={{ fontFamily: 'var(--font-mono-var, monospace)', fontSize: '0.4375rem', color: mob.num, letterSpacing: '0.10em' }}>{d.n}</span>
+                <span style={{ fontFamily: 'var(--font-body-var, sans-serif)', fontSize: '0.6875rem', fontWeight: 500, color: mob.label, letterSpacing: '-0.005em' }}>{d.label}</span>
               </div>
             ))}
 
