@@ -151,6 +151,37 @@ export default function HowWeWorkPage() {
               </div>
             </div>
           </Reveal>
+          {/* Phase sequence — shows chain before detail rows */}
+          <Reveal delay={0.06}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '0.375rem',
+                marginBottom: '1.75rem',
+                paddingBottom: '1.5rem',
+                borderBottom: '1px solid rgba(17,18,20,0.07)',
+              }}
+            >
+              {PHASES.flatMap((p, i) => {
+                const node = (
+                  <div key={p.n} style={{ display: 'flex', alignItems: 'baseline', gap: '0.375rem' }}>
+                    <span style={{ fontFamily: 'var(--font-mono-var, monospace)', fontSize: '0.4375rem', letterSpacing: '0.12em', color: 'rgba(17,18,20,0.26)' }}>
+                      {p.n}
+                    </span>
+                    <span className="font-body font-medium" style={{ fontSize: '0.8125rem', color: '#111214', letterSpacing: '-0.005em' }}>
+                      {p.label}
+                    </span>
+                  </div>
+                )
+                if (i < PHASES.length - 1) {
+                  return [node, <span key={`s${i}`} aria-hidden style={{ color: 'rgba(17,18,20,0.16)', fontSize: '0.6875rem', userSelect: 'none', lineHeight: 1 }}>–</span>]
+                }
+                return [node]
+              })}
+            </div>
+          </Reveal>
           <div>
             {PHASES.map((p, i) => (
               <PhaseRow key={p.n} phase={p} index={i} />

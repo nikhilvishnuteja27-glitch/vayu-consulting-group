@@ -115,7 +115,7 @@ export function OperatingDifference() {
         >
           <p
             className="font-display font-normal italic"
-            style={{ fontSize: 'clamp(1rem, 1.6vw, 1.45rem)', lineHeight: 1.40, letterSpacing: '-0.014em', color: 'rgba(245,243,238,0.38)', maxWidth: '54ch' }}
+            style={{ fontSize: 'clamp(1rem, 1.6vw, 1.45rem)', lineHeight: 1.40, letterSpacing: '-0.014em', color: 'rgba(245,243,238,0.44)', maxWidth: '54ch' }}
           >
             &ldquo;Our operators have been accountable for outcomes — not advisors who studied them.
             That distinction shapes everything: how we structure engagements, how we measure success, and when we consider an engagement complete.&rdquo;

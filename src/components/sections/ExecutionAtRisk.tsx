@@ -69,27 +69,43 @@ export function ExecutionAtRisk() {
           </p>
         </motion.div>
 
-        {/* Editorial scenario list */}
-        <div>
+        {/* Diagnostic grid — 3 columns × 2 rows */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {SCENARIOS.map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.48, delay: 0.10 + i * 0.06, ease: EASE }}
-              className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-3 md:gap-14 py-5"
-              style={{ borderTop: '1px solid rgba(17,18,20,0.07)' }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.48, delay: 0.10 + i * 0.05, ease: EASE }}
+              className={`${i % 3 < 2 ? 'md:pr-8' : ''} ${i % 3 > 0 ? 'md:pl-8' : ''}`}
+              style={{
+                borderTop: '1px solid rgba(17,18,20,0.07)',
+                paddingTop: '1.75rem',
+                paddingBottom: '1.75rem',
+              }}
             >
-              <p className="font-body font-medium" style={{ fontSize: '0.9375rem', color: '#111214', letterSpacing: '-0.005em', lineHeight: 1.30 }}>
+              <span
+                className="font-mono"
+                style={{ fontSize: '0.4375rem', letterSpacing: '0.14em', color: 'rgba(17,18,20,0.20)', display: 'block', marginBottom: '0.875rem' }}
+              >
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <p
+                className="font-body font-medium"
+                style={{ fontSize: '0.9375rem', color: '#111214', letterSpacing: '-0.005em', lineHeight: 1.28, marginBottom: '0.625rem' }}
+              >
                 {item.trigger}
               </p>
-              <p className="font-body font-light" style={{ fontSize: '0.9375rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.48)' }}>
+              <p
+                className="font-body font-light"
+                style={{ fontSize: '0.875rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.48)' }}
+              >
                 {item.detail}
               </p>
             </motion.div>
           ))}
-          <div style={{ borderTop: '1px solid rgba(17,18,20,0.07)' }} />
         </div>
+        <div style={{ borderTop: '1px solid rgba(17,18,20,0.07)' }} />
 
         <motion.div
           initial={{ opacity: 0, y: 8 }}

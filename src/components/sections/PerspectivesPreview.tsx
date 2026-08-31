@@ -77,9 +77,9 @@ export function PerspectivesPreview() {
             <span
               className="font-mono"
               style={{
-                fontSize: '0.75rem',
-                letterSpacing: '0.06em',
-                color: 'rgba(17,18,20,0.28)',
+                fontSize: '0.5625rem',
+                letterSpacing: '0.10em',
+                color: 'rgba(17,18,20,0.30)',
                 paddingTop: '0.2rem',
                 userSelect: 'none',
               }}

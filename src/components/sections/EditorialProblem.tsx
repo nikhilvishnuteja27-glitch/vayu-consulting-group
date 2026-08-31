@@ -239,9 +239,9 @@ export function EditorialProblem() {
                   <button
                     onClick={openModal}
                     className="inline-flex items-center gap-2 font-body font-normal transition-colors duration-200"
-                    style={{ fontSize: '0.8125rem', color: 'rgba(17,18,20,0.34)' }}
+                    style={{ fontSize: '0.8125rem', color: 'rgba(17,18,20,0.40)' }}
                     onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.color = '#111214'}
-                    onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.color = 'rgba(17,18,20,0.34)'}
+                    onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.color = 'rgba(17,18,20,0.40)'}
                   >
                     If this describes your initiative →
                   </button>

@@ -97,7 +97,7 @@ function PrincipleRow({ principle, index }: { principle: (typeof PRINCIPLES)[0];
         }}
         className="md:grid-cols-[240px_1fr] md:gap-12"
       >
-        <p className="font-body font-medium" style={{ fontSize: '0.9375rem', color: '#111214', letterSpacing: '-0.005em', lineHeight: 1.3 }}>
+        <p className="font-display font-normal" style={{ fontSize: 'clamp(1rem, 1.4vw, 1.125rem)', color: '#111214', letterSpacing: '-0.018em', lineHeight: 1.22 }}>
           {principle.claim}
         </p>
         <p className="font-body font-light" style={{ fontSize: '0.9375rem', lineHeight: 1.82, color: 'rgba(17,18,20,0.50)' }}>
@@ -127,7 +127,7 @@ function CommitmentRow({ c, index }: { c: (typeof COMMITMENTS)[0]; index: number
         alignItems: 'start',
       }}
     >
-      <span className="font-mono" style={{ fontSize: '0.4375rem', letterSpacing: '0.14em', color: 'rgba(245,243,238,0.20)', paddingTop: '0.18rem' }}>
+      <span className="font-mono" style={{ fontSize: '0.4375rem', letterSpacing: '0.14em', color: 'rgba(245,243,238,0.26)', paddingTop: '0.18rem' }}>
         {c.n}
       </span>
       <p className="font-body font-light" style={{ fontSize: '0.9375rem', lineHeight: 1.80, color: 'rgba(245,243,238,0.54)' }}>

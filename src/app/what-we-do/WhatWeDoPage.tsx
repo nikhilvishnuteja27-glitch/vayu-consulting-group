@@ -158,7 +158,7 @@ export default function WhatWeDoPage() {
       </section>
 
       {/* ── 2. Executive Problems — White ────────────────── */}
-      <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,18,20,0.05)' }}>
+      <section style={{ background: '#FFFFFF', borderTop: '1px solid rgba(17,18,20,0.07)' }}>
         <div className="container-site" style={{ paddingTop: 'clamp(4rem,6vw,6rem)', paddingBottom: 'clamp(4rem,6vw,6rem)' }}>
           <Reveal>
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-8 mb-12">
@@ -213,22 +213,53 @@ export default function WhatWeDoPage() {
           </Reveal>
           <Reveal delay={0.08}>
             <p className="vcg-label-dark mb-5">Capability Areas</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-0">
-              {CAPABILITIES.map((cap, i) => (
+            {/* 3-column capability architecture — grouped by delivery domain */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
+              {([
+                { label: 'Transformation', items: CAPABILITIES.slice(0, 2) },
+                { label: 'Technology & Operating Model', items: CAPABILITIES.slice(2, 4) },
+                { label: 'Governance & Talent', items: CAPABILITIES.slice(4, 6) },
+              ] as const).map((group, gi) => (
                 <div
-                  key={cap.title}
+                  key={group.label}
                   style={{
-                    paddingTop: '1.25rem',
-                    paddingBottom: '1.25rem',
-                    borderTop: '1px solid rgba(17,18,20,0.07)',
+                    paddingTop: '1.5rem',
+                    paddingBottom: '1.5rem',
+                    paddingRight: gi < 2 ? '2rem' : '0',
+                    paddingLeft: gi > 0 ? '2rem' : '0',
+                    borderTop: '2px solid rgba(17,18,20,0.10)',
+                    borderLeft: gi > 0 ? '1px solid rgba(17,18,20,0.07)' : 'none',
                   }}
                 >
-                  <p className="font-body font-medium mb-1.5" style={{ fontSize: '0.875rem', color: '#111214', letterSpacing: '-0.005em' }}>
-                    {cap.title}
+                  <p
+                    className="font-mono"
+                    style={{ fontSize: '0.375rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(17,18,20,0.28)', marginBottom: '1rem' }}
+                  >
+                    {group.label}
                   </p>
-                  <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.80, color: 'rgba(17,18,20,0.50)' }}>
-                    {cap.body}
-                  </p>
+                  {group.items.map((cap) => (
+                    <div
+                      key={cap.title}
+                      style={{
+                        paddingTop: '1rem',
+                        paddingBottom: '1rem',
+                        borderTop: '1px solid rgba(17,18,20,0.07)',
+                      }}
+                    >
+                      <p
+                        className="font-body font-medium"
+                        style={{ fontSize: '0.875rem', color: '#111214', letterSpacing: '-0.005em', marginBottom: '0.5rem' }}
+                      >
+                        {cap.title}
+                      </p>
+                      <p
+                        className="font-body font-light"
+                        style={{ fontSize: '0.8125rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.50)' }}
+                      >
+                        {cap.body}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
