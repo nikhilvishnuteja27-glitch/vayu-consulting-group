@@ -87,22 +87,22 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
                 stroke={hl(2) ? 'var(--diagram-signal)' : 'var(--diagram-boundary)'}
                 strokeWidth={0.9} opacity={0.72}
               />
-              <text x={62} y={OBS_Y - 10} fill={textColor(2)} opacity={0.48} style={MONO}>
+              <text x={62} y={OBS_Y - 10} fill={textColor(2)} opacity={0.60} style={MONO}>
                 III — EXECUTIVE VISIBILITY
               </text>
-              <text x={420} y={OBS_Y - 10} textAnchor="end" fill={textColor(2)} opacity={0.22} style={MONO_SM}>
+              <text x={420} y={OBS_Y - 10} textAnchor="end" fill={textColor(2)} opacity={0.30} style={MONO_SM}>
                 OBSERVATION LAYER
               </text>
               {/* Vertical connectors to ACC and DA — observation relationship */}
               <line
                 x1={ACC.x} y1={OBS_Y + 1} x2={ACC.x} y2={ACC.y - 12}
                 stroke={hl(2) ? 'var(--diagram-signal)' : 'var(--diagram-boundary)'}
-                strokeWidth={0.65} opacity={0.48}
+                strokeWidth={0.65} opacity={0.54}
               />
               <line
                 x1={DA.x} y1={OBS_Y + 1} x2={DA.x} y2={DA.y - 12}
                 stroke={hl(2) ? 'var(--diagram-signal)' : 'var(--diagram-boundary)'}
-                strokeWidth={0.65} opacity={0.48}
+                strokeWidth={0.65} opacity={0.54}
               />
             </g>
           </motion.g>
@@ -115,13 +115,13 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
           >
             <g style={{ opacity: gOp(0), transition: hTr }}>
               <circle cx={ACC.x} cy={ACC.y} r={5.5} fill={nodeColor(0)} opacity={0.82} />
-              <text x={10} y={ACC.y + 20} fill={textColor(0)} opacity={0.40} style={MONO}>
+              <text x={10} y={ACC.y + 20} fill={textColor(0)} opacity={0.54} style={MONO}>
                 I — ACCOUNTABILITY
               </text>
               {/* Path to Execution State */}
               <line
                 x1={ACC.x + 4} y1={ACC.y + 5} x2={EXEC.x - 4} y2={EXEC.y - 8}
-                stroke={pathColor(0)} strokeWidth={0.9} opacity={hl(0) ? 0.65 : 0.34}
+                stroke={pathColor(0)} strokeWidth={0.9} opacity={hl(0) ? 0.72 : 0.50}
               />
             </g>
           </motion.g>
@@ -136,22 +136,22 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
               {/* Convergence inputs — multiple decisions routed to one framework */}
               <line
                 x1={DA_IN1.x} y1={DA_IN1.y} x2={DA.x} y2={DA.y - 10}
-                stroke={pathColor(1)} strokeWidth={0.6} opacity={0.24}
+                stroke={pathColor(1)} strokeWidth={0.6} opacity={0.32}
               />
               <line
                 x1={DA_IN2.x} y1={DA_IN2.y} x2={DA.x} y2={DA.y - 10}
-                stroke={pathColor(1)} strokeWidth={0.6} opacity={0.24}
+                stroke={pathColor(1)} strokeWidth={0.6} opacity={0.32}
               />
-              <circle cx={DA_IN1.x} cy={DA_IN1.y} r={2.5} fill="var(--diagram-node)" opacity={0.26} />
-              <circle cx={DA_IN2.x} cy={DA_IN2.y} r={2.5} fill="var(--diagram-node)" opacity={0.26} />
+              <circle cx={DA_IN1.x} cy={DA_IN1.y} r={2.5} fill="var(--diagram-node)" opacity={0.34} />
+              <circle cx={DA_IN2.x} cy={DA_IN2.y} r={2.5} fill="var(--diagram-node)" opacity={0.34} />
               <circle cx={DA.x} cy={DA.y} r={5.5} fill={nodeColor(1)} opacity={0.82} />
-              <text x={470} y={DA.y + 20} textAnchor="end" fill={textColor(1)} opacity={0.40} style={MONO}>
+              <text x={470} y={DA.y + 20} textAnchor="end" fill={textColor(1)} opacity={0.54} style={MONO}>
                 II — DECISION ARCHITECTURE
               </text>
               {/* Path to Execution State */}
               <line
                 x1={DA.x - 4} y1={DA.y + 5} x2={EXEC.x + 4} y2={EXEC.y - 8}
-                stroke={pathColor(1)} strokeWidth={0.9} opacity={hl(1) ? 0.65 : 0.34}
+                stroke={pathColor(1)} strokeWidth={0.9} opacity={hl(1) ? 0.72 : 0.50}
               />
             </g>
           </motion.g>
@@ -163,8 +163,8 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             transition={esTr(0.50)}
           >
             <g style={{ opacity: execOp, transition: hTr }}>
-              <circle cx={EXEC.x} cy={EXEC.y} r={7}  fill="var(--diagram-node)" opacity={0.66} />
-              <circle cx={EXEC.x} cy={EXEC.y} r={15} stroke="var(--diagram-node)" strokeWidth={0.5} opacity={0.14} />
+              <circle cx={EXEC.x} cy={EXEC.y} r={7}  fill="var(--diagram-node)" opacity={0.78} />
+              <circle cx={EXEC.x} cy={EXEC.y} r={15} stroke="var(--diagram-node)" strokeWidth={0.5} opacity={0.20} />
               <text x={EXEC.x} y={EXEC.y + 27} textAnchor="middle" fill="var(--diagram-node)" opacity={0.24} style={MONO_SM}>
                 EXECUTION STATE
               </text>
@@ -180,7 +180,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             <g style={{ opacity: gOp(3), transition: hTr }}>
               <line
                 x1={EXEC.x} y1={EXEC.y + 10} x2={DEP_C.x} y2={DEP_C.y - 7}
-                stroke={pathColor(3)} strokeWidth={0.9} opacity={hl(3) ? 0.58 : 0.32}
+                stroke={pathColor(3)} strokeWidth={0.9} opacity={hl(3) ? 0.68 : 0.48}
               />
             </g>
           </motion.g>
@@ -193,16 +193,16 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
           >
             <g style={{ opacity: gOp(3), transition: hTr }}>
               {/* Workstream nodes — cross-functional endpoints */}
-              <circle cx={DEP_L.x} cy={DEP_L.y} r={3.5} fill="var(--diagram-node)" opacity={0.36} />
-              <circle cx={DEP_R.x} cy={DEP_R.y} r={3.5} fill="var(--diagram-node)" opacity={0.36} />
+              <circle cx={DEP_L.x} cy={DEP_L.y} r={3.5} fill="var(--diagram-node)" opacity={0.46} />
+              <circle cx={DEP_R.x} cy={DEP_R.y} r={3.5} fill="var(--diagram-node)" opacity={0.46} />
               {/* Bridge — the owned interface between workstreams */}
               <line
                 x1={DEP_L.x} y1={DEP_L.y} x2={DEP_R.x} y2={DEP_R.y}
-                stroke={pathColor(3)} strokeWidth={0.9} opacity={hl(3) ? 0.68 : 0.40}
+                stroke={pathColor(3)} strokeWidth={0.9} opacity={hl(3) ? 0.76 : 0.56}
               />
               {/* Center ownership point */}
-              <circle cx={DEP_C.x} cy={DEP_C.y} r={4.5} fill={nodeColor(3)} opacity={0.72} />
-              <text x={DEP_C.x} y={DEP_C.y - 12} textAnchor="middle" fill={textColor(3)} opacity={0.38} style={MONO}>
+              <circle cx={DEP_C.x} cy={DEP_C.y} r={4.5} fill={nodeColor(3)} opacity={0.84} />
+              <text x={DEP_C.x} y={DEP_C.y - 12} textAnchor="middle" fill={textColor(3)} opacity={0.52} style={MONO}>
                 IV — DEPENDENCY OWNERSHIP
               </text>
             </g>
@@ -217,7 +217,7 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             <g style={{ opacity: gOp(4), transition: hTr }}>
               <line
                 x1={DEP_C.x} y1={DEP_C.y + 7} x2={OUTD.x} y2={OUTD.y - 8}
-                stroke={pathColor(4)} strokeWidth={0.9} opacity={hl(4) ? 0.58 : 0.32}
+                stroke={pathColor(4)} strokeWidth={0.9} opacity={hl(4) ? 0.68 : 0.48}
               />
             </g>
           </motion.g>
@@ -229,14 +229,14 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
             transition={esTr(0.86)}
           >
             <g style={{ opacity: gOp(4), transition: hTr }}>
-              <circle cx={OUTD.x} cy={OUTD.y} r={5.5} fill={nodeColor(4)} opacity={0.76} />
-              <text x={OUTD.x + 14} y={OUTD.y + 4} fill={textColor(4)} opacity={0.38} style={MONO}>
+              <circle cx={OUTD.x} cy={OUTD.y} r={5.5} fill={nodeColor(4)} opacity={0.86} />
+              <text x={OUTD.x + 14} y={OUTD.y + 4} fill={textColor(4)} opacity={0.52} style={MONO}>
                 V — OUTCOME DISCIPLINE
               </text>
               {/* Path to Outcome */}
               <line
                 x1={OUTD.x} y1={OUTD.y + 8} x2={OUT.x} y2={OUT.y - 9}
-                stroke={pathColor(4)} strokeWidth={0.9} opacity={hl(4) ? 0.62 : 0.38}
+                stroke={pathColor(4)} strokeWidth={0.9} opacity={hl(4) ? 0.72 : 0.54}
               />
             </g>
           </motion.g>
@@ -249,8 +249,8 @@ export function ExecutionIntelligenceMap({ hoveredDim }: Props) {
           >
             <g style={{ opacity: outOp, transition: hTr }}>
               <circle cx={OUT.x} cy={OUT.y} r={5.5}  fill="var(--diagram-outcome)" opacity={0.84} />
-              <circle cx={OUT.x} cy={OUT.y} r={14}   stroke="var(--diagram-outcome)" strokeWidth={0.5} opacity={0.20} />
-              <text x={OUT.x} y={OUT.y + 24} textAnchor="middle" fill="var(--diagram-outcome)" opacity={0.40} style={MONO}>
+              <circle cx={OUT.x} cy={OUT.y} r={14}   stroke="var(--diagram-outcome)" strokeWidth={0.5} opacity={0.28} />
+              <text x={OUT.x} y={OUT.y + 24} textAnchor="middle" fill="var(--diagram-outcome)" opacity={0.54} style={MONO}>
                 OUTCOME
               </text>
             </g>

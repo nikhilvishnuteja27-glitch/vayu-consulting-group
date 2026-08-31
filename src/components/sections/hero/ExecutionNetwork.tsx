@@ -75,53 +75,53 @@ export function ExecutionNetwork() {
           style={{ display: 'block' }}
         >
           {/* ─── Secondary structural paths (background, very restrained) ─── */}
-          <Path d={`M ${N.intent.cx},${N.intent.cy} L ${N.n3.cx},${N.n3.cy}`} variant="structural" opacity={0.28} strokeWidth={0.75} />
-          <Path d={`M ${N.n3.cx},${N.n3.cy} L ${N.jxn.cx},${N.jxn.cy}`}       variant="structural" opacity={0.28} strokeWidth={0.75} />
-          <Path d={`M ${N.n1.cx},${N.n1.cy} L ${N.n2.cx},${N.n2.cy}`}         variant="structural" opacity={0.22} strokeWidth={0.75} />
-          <Path d={`M ${N.n2.cx},${N.n2.cy} L ${N.n5.cx},${N.n5.cy}`}         variant="structural" opacity={0.20} strokeWidth={0.75} />
-          <Path d={`M ${N.n5.cx},${N.n5.cy} L ${N.jxn.cx},${N.jxn.cy}`}       variant="structural" opacity={0.22} strokeWidth={0.75} />
-          <Path d={`M ${N.jxn.cx},${N.jxn.cy} L ${N.n7.cx},${N.n7.cy}`}       variant="structural" opacity={0.24} strokeWidth={0.75} />
-          <Path d={`M ${N.n7.cx},${N.n7.cy} L ${N.out.cx},${N.out.cy}`}        variant="structural" opacity={0.28} strokeWidth={0.75} />
-          <Path d={`M ${N.n6.cx},${N.n6.cy} L ${N.n8.cx},${N.n8.cy}`}         variant="structural" opacity={0.18} strokeWidth={0.75} />
+          <Path d={`M ${N.intent.cx},${N.intent.cy} L ${N.n3.cx},${N.n3.cy}`} variant="structural" opacity={0.36} strokeWidth={0.75} />
+          <Path d={`M ${N.n3.cx},${N.n3.cy} L ${N.jxn.cx},${N.jxn.cy}`}       variant="structural" opacity={0.36} strokeWidth={0.75} />
+          <Path d={`M ${N.n1.cx},${N.n1.cy} L ${N.n2.cx},${N.n2.cy}`}         variant="structural" opacity={0.29} strokeWidth={0.75} />
+          <Path d={`M ${N.n2.cx},${N.n2.cy} L ${N.n5.cx},${N.n5.cy}`}         variant="structural" opacity={0.27} strokeWidth={0.75} />
+          <Path d={`M ${N.n5.cx},${N.n5.cy} L ${N.jxn.cx},${N.jxn.cy}`}       variant="structural" opacity={0.29} strokeWidth={0.75} />
+          <Path d={`M ${N.jxn.cx},${N.jxn.cy} L ${N.n7.cx},${N.n7.cy}`}       variant="structural" opacity={0.32} strokeWidth={0.75} />
+          <Path d={`M ${N.n7.cx},${N.n7.cy} L ${N.out.cx},${N.out.cy}`}        variant="structural" opacity={0.36} strokeWidth={0.75} />
+          <Path d={`M ${N.n6.cx},${N.n6.cy} L ${N.n8.cx},${N.n8.cy}`}         variant="structural" opacity={0.25} strokeWidth={0.75} />
 
           {/* ─── Main signal route (slightly more legible) ─── */}
-          <Path d={`M ${N.intent.cx},${N.intent.cy} L ${N.n1.cx},${N.n1.cy}`} variant="structural" opacity={0.46} />
-          <Path d={`M ${N.n1.cx},${N.n1.cy} L ${N.jxn.cx},${N.jxn.cy}`}       variant="structural" opacity={0.46} />
-          <Path d={`M ${N.jxn.cx},${N.jxn.cy} L ${N.n6.cx},${N.n6.cy}`}       variant="structural" opacity={0.44} />
-          <Path d={`M ${N.n6.cx},${N.n6.cy} L ${N.out.cx},${N.out.cy}`}        variant="structural" opacity={0.46} />
+          <Path d={`M ${N.intent.cx},${N.intent.cy} L ${N.n1.cx},${N.n1.cy}`} variant="structural" opacity={0.60} />
+          <Path d={`M ${N.n1.cx},${N.n1.cy} L ${N.jxn.cx},${N.jxn.cy}`}       variant="structural" opacity={0.58} />
+          <Path d={`M ${N.jxn.cx},${N.jxn.cy} L ${N.n6.cx},${N.n6.cy}`}       variant="structural" opacity={0.58} />
+          <Path d={`M ${N.n6.cx},${N.n6.cy} L ${N.out.cx},${N.out.cy}`}        variant="structural" opacity={0.62} />
 
           {/* ─── Peripheral nodes ─── */}
-          <Node cx={N.n2.cx}  cy={N.n2.cy}  r={2.5} variant="default" opacity={0.30} />
-          <Node cx={N.n3.cx}  cy={N.n3.cy}  r={2.5} variant="default" opacity={0.33} />
-          <Node cx={N.n5.cx}  cy={N.n5.cy}  r={2.5} variant="default" opacity={0.28} />
-          <Node cx={N.n7.cx}  cy={N.n7.cy}  r={2.5} variant="default" opacity={0.28} />
-          <Node cx={N.n8.cx}  cy={N.n8.cy}  r={2}   variant="default" opacity={0.20} />
+          <Node cx={N.n2.cx}  cy={N.n2.cy}  r={2.5} variant="default" opacity={0.36} />
+          <Node cx={N.n3.cx}  cy={N.n3.cy}  r={2.5} variant="default" opacity={0.40} />
+          <Node cx={N.n5.cx}  cy={N.n5.cy}  r={2.5} variant="default" opacity={0.34} />
+          <Node cx={N.n7.cx}  cy={N.n7.cy}  r={2.5} variant="default" opacity={0.34} />
+          <Node cx={N.n8.cx}  cy={N.n8.cy}  r={2}   variant="default" opacity={0.26} />
 
           {/* ─── Route nodes ─── */}
-          <Node cx={N.n1.cx}  cy={N.n1.cy}  r={3.5} variant="default" opacity={0.50} />
-          <Node cx={N.n6.cx}  cy={N.n6.cy}  r={3.5} variant="default" opacity={0.46} />
+          <Node cx={N.n1.cx}  cy={N.n1.cy}  r={3.5} variant="default" opacity={0.60} />
+          <Node cx={N.n6.cx}  cy={N.n6.cy}  r={3.5} variant="default" opacity={0.58} />
 
           {/* Junction — structural decision point */}
-          <Node cx={N.jxn.cx} cy={N.jxn.cy} r={4.0} variant="default" opacity={0.58} />
+          <Node cx={N.jxn.cx} cy={N.jxn.cy} r={4.0} variant="default" opacity={0.68} />
 
           {/* Intent — entry */}
-          <Node cx={N.intent.cx} cy={N.intent.cy} r={4.5} variant="default" opacity={0.64} />
+          <Node cx={N.intent.cx} cy={N.intent.cy} r={4.5} variant="default" opacity={0.74} />
 
           {/* Outcome — destination. Larger, with outer ring */}
-          <Node cx={N.out.cx} cy={N.out.cy} r={5}   variant="default" opacity={0.54} />
+          <Node cx={N.out.cx} cy={N.out.cy} r={5}   variant="default" opacity={0.66} />
           <circle
             cx={N.out.cx} cy={N.out.cy} r={12}
             fill="none"
             stroke="var(--diagram-outcome)"
             strokeWidth={0.5}
-            opacity={prefersReduced ? 0.40 : 0.20}
+            opacity={prefersReduced ? 0.48 : 0.28}
           />
 
           {/* ─── Micro-labels ─── */}
           <text
             x={8} y={91}
             fill="var(--diagram-node)"
-            opacity={0.52}
+            opacity={0.64}
             style={LABEL_STYLE}
           >
             STRATEGIC INTENT
@@ -130,7 +130,7 @@ export function ExecutionNetwork() {
             x={N.out.cx} y={N.out.cy + 20}
             textAnchor="middle"
             fill="var(--diagram-outcome)"
-            opacity={prefersReduced ? 0.52 : 0.28}
+            opacity={prefersReduced ? 0.60 : 0.44}
             style={LABEL_STYLE}
           >
             OUTCOME

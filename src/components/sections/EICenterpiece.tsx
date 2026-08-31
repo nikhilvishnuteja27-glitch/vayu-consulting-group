@@ -96,14 +96,14 @@ export function EICenterpiece() {
               initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.22, ease: EASE }}
-              style={{ marginTop: '2.5rem' }}
+              style={{ marginTop: '3rem' }}
             >
               {DIMS.map((dim, i) => (
                 <div
                   key={dim.n}
                   style={{
                     borderTop: '1px solid rgba(245,243,238,0.06)',
-                    padding: '0.875rem 0',
+                    padding: '1.125rem 0',
                     opacity: hoveredDim === null || hoveredDim === i ? 1 : 0.28,
                     transition: 'opacity 0.18s ease',
                     cursor: 'default',
@@ -111,7 +111,7 @@ export function EICenterpiece() {
                   onMouseEnter={() => setHoveredDim(i)}
                   onMouseLeave={() => setHoveredDim(null)}
                 >
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.625rem', marginBottom: '0.3rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.625rem', marginBottom: '0.4rem' }}>
                     <span style={{ fontFamily: 'var(--font-mono-var, monospace)', fontSize: '0.5rem', color: 'rgba(200,169,110,0.60)', letterSpacing: '0.10em', flexShrink: 0 }}>
                       {dim.n}
                     </span>
@@ -128,7 +128,7 @@ export function EICenterpiece() {
                       {dim.label}
                     </span>
                   </div>
-                  <p style={{ fontFamily: 'var(--font-body-var, sans-serif)', fontSize: '0.8125rem', fontWeight: 300, color: 'rgba(245,243,238,0.38)', lineHeight: 1.72, margin: 0 }}>
+                  <p style={{ fontFamily: 'var(--font-body-var, sans-serif)', fontSize: '0.8125rem', fontWeight: 300, color: 'rgba(245,243,238,0.38)', lineHeight: 1.76, margin: 0 }}>
                     {dim.body}
                   </p>
                 </div>
