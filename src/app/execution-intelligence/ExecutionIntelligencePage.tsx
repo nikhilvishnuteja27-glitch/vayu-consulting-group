@@ -208,16 +208,23 @@ function SectionReveal({ children, delay = 0 }: { children: React.ReactNode; del
   )
 }
 
-function DimensionCard({ dim, index }: { dim: (typeof DIMENSIONS)[0]; index: number }) {
+function DimensionCard({ dim, index, dark = false }: { dim: (typeof DIMENSIONS)[0]; index: number; dark?: boolean }) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, amount: 0.08 })
   const isEven = index % 2 === 1
+
+  const headlineColor = dark ? '#F5F3EE' : '#111214'
+  const bodyColor = dark ? 'rgba(245,243,238,0.60)' : (isEven ? 'rgba(17,18,20,0.54)' : 'rgba(17,18,20,0.52)')
+  const labelClass = dark ? 'vcg-label' : 'vcg-label-dark'
+  const innerBorder = dark ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(17,18,20,0.07)'
+  const questionNumColor = dark ? 'rgba(245,243,238,0.26)' : (isEven ? 'rgba(17,18,20,0.25)' : 'rgba(17,18,20,0.22)')
+  const darkLabelStyle: React.CSSProperties = dark ? { color: 'rgba(245,243,238,0.50)' } : {}
 
   return (
     <div
       ref={ref}
       style={{
-        borderTop: '1px solid rgba(17,18,20,0.07)',
+        borderTop: dark ? 'none' : '1px solid rgba(17,18,20,0.07)',
         paddingTop: 'clamp(3rem,5vw,4.5rem)',
         paddingBottom: 'clamp(3rem,5vw,4.5rem)',
       }}
@@ -235,7 +242,7 @@ function DimensionCard({ dim, index }: { dim: (typeof DIMENSIONS)[0]; index: num
           </div>
           <p
             className="font-display font-normal"
-            style={{ fontSize: 'clamp(1.5rem, 2.6vw, 2.6rem)', lineHeight: 1.10, letterSpacing: '-0.026em', color: '#111214', maxWidth: '32ch', marginBottom: '1.5rem' }}
+            style={{ fontSize: 'clamp(1.5rem, 2.6vw, 2.6rem)', lineHeight: 1.10, letterSpacing: '-0.026em', color: headlineColor, maxWidth: '32ch', marginBottom: '1.5rem' }}
           >
             {dim.definition}
           </p>
@@ -247,16 +254,16 @@ function DimensionCard({ dim, index }: { dim: (typeof DIMENSIONS)[0]; index: num
               { label: 'Relationship to Other Dimensions', body: dim.relationship },
             ].map(row => (
               <div key={row.label}>
-                <p className="vcg-label-dark mb-2">{row.label}</p>
-                <p className="font-body font-light" style={{ fontSize: '0.9rem', lineHeight: 1.80, color: 'rgba(17,18,20,0.54)' }}>{row.body}</p>
+                <p className={`${labelClass} mb-2`} style={darkLabelStyle}>{row.label}</p>
+                <p className="font-body font-light" style={{ fontSize: '0.9rem', lineHeight: 1.80, color: bodyColor }}>{row.body}</p>
               </div>
             ))}
           </div>
-          <div className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(17,18,20,0.07)' }}>
-            <p className="vcg-label-dark mb-4">Executive Questions</p>
+          <div className="mt-8 pt-6" style={{ borderTop: innerBorder }}>
+            <p className={`${labelClass} mb-4`} style={darkLabelStyle}>Executive Questions</p>
             {dim.questions.map((q, qi) => (
-              <p key={qi} className="font-body font-light mb-3" style={{ fontSize: '0.9rem', lineHeight: 1.74, color: 'rgba(17,18,20,0.54)' }}>
-                <span className="font-mono" style={{ fontSize: '0.5rem', letterSpacing: '0.14em', color: 'rgba(17,18,20,0.25)', marginRight: '0.625rem' }}>{String(qi + 1).padStart(2, '0')}</span>
+              <p key={qi} className="font-body font-light mb-3" style={{ fontSize: '0.9rem', lineHeight: 1.74, color: bodyColor }}>
+                <span className="font-mono" style={{ fontSize: '0.5rem', letterSpacing: '0.14em', color: questionNumColor, marginRight: '0.625rem' }}>{String(qi + 1).padStart(2, '0')}</span>
                 {q}
               </p>
             ))}
@@ -277,7 +284,7 @@ function DimensionCard({ dim, index }: { dim: (typeof DIMENSIONS)[0]; index: num
           <div>
             <p
               className="font-display font-normal mb-5"
-              style={{ fontSize: 'clamp(1.3rem, 2.2vw, 2.1rem)', lineHeight: 1.14, letterSpacing: '-0.022em', color: '#111214' }}
+              style={{ fontSize: 'clamp(1.3rem, 2.2vw, 2.1rem)', lineHeight: 1.14, letterSpacing: '-0.022em', color: headlineColor }}
             >
               {dim.definition}
             </p>
@@ -289,16 +296,16 @@ function DimensionCard({ dim, index }: { dim: (typeof DIMENSIONS)[0]; index: num
                 { label: 'Relationship to Other Dimensions', body: dim.relationship },
               ].map(row => (
                 <div key={row.label}>
-                  <p className="vcg-label-dark mb-2">{row.label}</p>
-                  <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.52)' }}>{row.body}</p>
+                  <p className={`${labelClass} mb-2`} style={darkLabelStyle}>{row.label}</p>
+                  <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.78, color: bodyColor }}>{row.body}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-6 pt-5" style={{ borderTop: '1px solid rgba(17,18,20,0.07)' }}>
-              <p className="vcg-label-dark mb-3">Executive Questions</p>
+            <div className="mt-6 pt-5" style={{ borderTop: innerBorder }}>
+              <p className={`${labelClass} mb-3`} style={darkLabelStyle}>Executive Questions</p>
               {dim.questions.map((q, qi) => (
-                <p key={qi} className="font-body font-light mb-3" style={{ fontSize: '0.875rem', lineHeight: 1.74, color: 'rgba(17,18,20,0.52)' }}>
-                  <span className="font-mono" style={{ fontSize: '0.5rem', letterSpacing: '0.14em', color: 'rgba(17,18,20,0.22)', marginRight: '0.5rem' }}>{String(qi + 1).padStart(2, '0')}</span>
+                <p key={qi} className="font-body font-light mb-3" style={{ fontSize: '0.875rem', lineHeight: 1.74, color: bodyColor }}>
+                  <span className="font-mono" style={{ fontSize: '0.5rem', letterSpacing: '0.14em', color: questionNumColor, marginRight: '0.5rem' }}>{String(qi + 1).padStart(2, '0')}</span>
                   {q}
                 </p>
               ))}
@@ -460,12 +467,28 @@ export default function ExecutionIntelligencePage() {
         </div>
       </section>
 
-      {/* ── 3. Five Dimensions ────────────────────────────── */}
+      {/* ── 3a. Dimensions I & II ─────────────────────────── */}
+      <section style={{ background: '#F5F3EE' }}>
+        <div className="container-site">
+          <DimensionCard dim={DIMENSIONS[0]} index={0} />
+          <DimensionCard dim={DIMENSIONS[1]} index={1} />
+        </div>
+      </section>
+
+      {/* ── 3b. Dimension III — Executive Visibility ──────── */}
+      {/* Dark platform: EV is the observation layer for all other dimensions — */}
+      {/* structurally distinct from the four execution conditions around it.    */}
+      <section style={{ background: '#0B0B0D', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="container-site">
+          <DimensionCard dim={DIMENSIONS[2]} index={2} dark />
+        </div>
+      </section>
+
+      {/* ── 3c. Dimensions IV & V ─────────────────────────── */}
       <section style={{ background: '#F5F3EE' }}>
         <div className="container-site" style={{ paddingBottom: 'clamp(4.5rem,7vw,6.5rem)' }}>
-          {DIMENSIONS.map((dim, i) => (
-            <DimensionCard key={dim.n} dim={dim} index={i} />
-          ))}
+          <DimensionCard dim={DIMENSIONS[3]} index={3} />
+          <DimensionCard dim={DIMENSIONS[4]} index={4} />
         </div>
       </section>
 
