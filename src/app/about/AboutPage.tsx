@@ -281,12 +281,24 @@ export default function AboutPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="font-body font-medium mb-1" style={{ fontSize: '0.875rem', color: '#111214', letterSpacing: '-0.004em' }}>
-                      Operations
+                    <p className="font-body font-medium mb-3" style={{ fontSize: '0.875rem', color: '#111214', letterSpacing: '-0.004em' }}>
+                      Offices
                     </p>
-                    <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.48)' }}>
-                      North America.
-                    </p>
+                    <div className="space-y-4">
+                      <div>
+                        <p className="font-body font-medium" style={{ fontSize: '0.8125rem', color: '#111214', letterSpacing: '-0.003em' }}>United States</p>
+                        <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.48)' }}>Headquarters</p>
+                      </div>
+                      <div>
+                        <p className="font-body font-medium" style={{ fontSize: '0.8125rem', color: '#111214', letterSpacing: '-0.003em' }}>India</p>
+                        <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.48)' }}>
+                          Tirupati Office<br />
+                          22/6/167/2 Sai Ganesh Layout<br />
+                          Akarampalli, Tirupati – 517501<br />
+                          Andhra Pradesh, India
+                        </p>
+                      </div>
+                    </div>
                   </div>
                   <div>
                     <p className="font-body font-medium mb-1" style={{ fontSize: '0.875rem', color: '#111214', letterSpacing: '-0.004em' }}>

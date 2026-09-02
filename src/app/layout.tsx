@@ -68,6 +68,20 @@ const structuredData = {
       telephone: '+13122700009',
       sameAs: ['https://linkedin.com/company/vayu-consulting-group'],
       description: 'Execution consulting firm that closes the gap between strategy and delivered outcomes through embedded senior operators and AI-enabled delivery infrastructure.',
+      address: [
+        {
+          '@type': 'PostalAddress',
+          addressCountry: 'US',
+          description: 'Headquarters',
+        },
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '22/6/167/2 Sai Ganesh Layout, Akarampalli',
+          addressLocality: 'Tirupati',
+          postalCode: '517501',
+          addressCountry: 'IN',
+        },
+      ],
     },
     {
       '@type': 'WebSite',

@@ -50,7 +50,7 @@ export function Footer() {
               Execution Intelligence for organizations that cannot afford failure.
             </p>
             <p className="mt-4 font-body font-light" style={{ fontSize: '0.75rem', lineHeight: 1.72, color: 'rgba(245,243,238,0.16)', maxWidth: '38ch' }}>
-              North America operations.
+              North America (HQ) · Tirupati, India
             </p>
           </div>
 
