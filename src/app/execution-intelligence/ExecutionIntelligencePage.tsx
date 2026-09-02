@@ -710,9 +710,9 @@ export default function ExecutionIntelligencePage() {
       </section>
 
       {/* ── 8. CTA ───────────────────────────────────────── */}
-      <section style={{ background: '#0B0B0D', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      <section style={{ background: '#0B0B0D', borderTop: '1px solid rgba(255,255,255,0.05)', position: 'relative' }}>
         <div
-          className="absolute left-0 right-0 h-px"
+          className="absolute top-0 left-0 right-0 h-px"
           style={{ background: 'linear-gradient(90deg,transparent,rgba(255,255,255,0.07) 40%,rgba(255,255,255,0.10) 50%,rgba(255,255,255,0.07) 60%,transparent)' }}
           aria-hidden
         />

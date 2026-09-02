@@ -29,6 +29,7 @@ export default function AIExecutionAccountabilityArticle() {
     '@type': 'Article',
     headline: perspective.title,
     description: perspective.description,
+    datePublished: perspective.dateISO,
     author: { '@type': 'Organization', name: 'Vayu Consulting Group', url: 'https://www.vayuconsultinggroup.com' },
     publisher: { '@type': 'Organization', name: 'Vayu Consulting Group', url: 'https://www.vayuconsultinggroup.com' },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.vayuconsultinggroup.com${perspective.href}` },
@@ -56,7 +57,7 @@ export default function AIExecutionAccountabilityArticle() {
 
         <P>From information, AI can support generation of what might be called execution intelligence — insights that are more directly decision-useful than raw data. This may include surfacing inconsistencies between reported status and underlying execution signals, highlighting decisions that have remained open beyond the point at which dependent work requires them, or supporting comparison of a program's current trajectory against its original execution design.</P>
 
-        <P>That last application connects to a concept introduced in an earlier VCG perspective: the distinction between a program's current reported <em>status</em> and its <em>trajectory</em> — where current execution conditions are taking it. Assessing trajectory requires synthesizing signals across an entire program, which becomes progressively harder as complexity increases. AI may help make aspects of that synthesis more feasible, surfacing the conditions that characterize execution drift — aging decisions, unresolved dependencies, divergence between activity and outcome — across a program at a scale difficult to maintain through manual review alone.</P>
+        <P>That last application connects to a concept introduced in <a href="/perspectives/transformation-stall" style={{ color: 'rgba(17,18,20,0.70)', textDecoration: 'underline', textDecorationColor: 'rgba(17,18,20,0.25)' }}>an earlier VCG perspective</a>: the distinction between a program's current reported <em>status</em> and its <em>trajectory</em> — where current execution conditions are taking it. Assessing trajectory requires synthesizing signals across an entire program, which becomes progressively harder as complexity increases. AI may help make aspects of that synthesis more feasible, surfacing the conditions that characterize execution drift — aging decisions, unresolved dependencies, divergence between activity and outcome — across a program at a scale difficult to maintain through manual review alone.</P>
 
         <P>These are real potential applications, and the range of what AI can support in execution contexts is developing. They operate within the information and intelligence layers of execution. The organizational design questions begin at the next layer.</P>
 

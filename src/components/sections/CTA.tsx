@@ -94,7 +94,7 @@ export function CTA() {
                 className="font-body font-light"
                 style={{ fontSize: '0.8rem', color: 'rgba(245,243,238,0.18)', letterSpacing: '0.01em' }}
               >
-                Confidential. No obligation. North America operations.
+                Confidential. No obligation.
               </p>
               <Link
                 href="/join"

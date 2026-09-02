@@ -29,6 +29,7 @@ export default function ExecutionIntelligenceArticle() {
     '@type': 'Article',
     headline: perspective.title,
     description: perspective.description,
+    datePublished: perspective.dateISO,
     author: { '@type': 'Organization', name: 'Vayu Consulting Group', url: 'https://www.vayuconsultinggroup.com' },
     publisher: { '@type': 'Organization', name: 'Vayu Consulting Group', url: 'https://www.vayuconsultinggroup.com' },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.vayuconsultinggroup.com${perspective.href}` },
