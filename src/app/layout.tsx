@@ -71,13 +71,19 @@ const structuredData = {
       address: [
         {
           '@type': 'PostalAddress',
+          name: 'Headquarters',
+          streetAddress: '585 Heritage Dr, Unit 201',
+          addressLocality: 'Hoffman Estates',
+          addressRegion: 'IL',
+          postalCode: '60169',
           addressCountry: 'US',
-          description: 'Headquarters',
         },
         {
           '@type': 'PostalAddress',
+          name: 'Tirupati Office',
           streetAddress: '22/6/167/2 Sai Ganesh Layout, Akarampalli',
           addressLocality: 'Tirupati',
+          addressRegion: 'Andhra Pradesh',
           postalCode: '517501',
           addressCountry: 'IN',
         },
