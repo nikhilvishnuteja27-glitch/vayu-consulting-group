@@ -87,6 +87,15 @@ const structuredData = {
           postalCode: '517501',
           addressCountry: 'IN',
         },
+        {
+          '@type': 'PostalAddress',
+          name: 'Hyderabad Office',
+          streetAddress: 'Office #309, 5th Floor, Liberty Plaza, 3-6-365, Himayatnagar',
+          addressLocality: 'Hyderabad',
+          addressRegion: 'Telangana',
+          postalCode: '500029',
+          addressCountry: 'IN',
+        },
       ],
     },
     {

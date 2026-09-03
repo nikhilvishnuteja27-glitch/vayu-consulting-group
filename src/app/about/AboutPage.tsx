@@ -294,12 +294,21 @@ export default function AboutPage() {
                         </p>
                       </div>
                       <div>
-                        <p className="font-body font-medium" style={{ fontSize: '0.8125rem', color: '#111214', letterSpacing: '-0.003em' }}>India</p>
+                        <p className="font-body font-medium" style={{ fontSize: '0.8125rem', color: '#111214', letterSpacing: '-0.003em' }}>India — Tirupati Office</p>
                         <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.48)' }}>
-                          Tirupati Office<br />
                           22/6/167/2 Sai Ganesh Layout<br />
                           Akarampalli, Tirupati – 517501<br />
                           Andhra Pradesh, India
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-body font-medium" style={{ fontSize: '0.8125rem', color: '#111214', letterSpacing: '-0.003em' }}>India — Hyderabad Office</p>
+                        <p className="font-body font-light" style={{ fontSize: '0.875rem', lineHeight: 1.78, color: 'rgba(17,18,20,0.48)' }}>
+                          Office #309, 5th Floor<br />
+                          Liberty Plaza<br />
+                          3-6-365, Himayatnagar<br />
+                          Hyderabad, Telangana 500029<br />
+                          India
                         </p>
                       </div>
                     </div>
